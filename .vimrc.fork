@@ -1,0 +1,59 @@
+set guifont=Andale_Mono:h16,Menlo:h16,Consolas:h16,Courier_New:h16
+set wrap
+
+set rnu!
+set ignorecase
+set hlsearch
+set nospell
+set autowrite                       " Automatically write a file when leaving a modified buffer
+"set autowriteall
+set autoread
+set go-=m
+set ts=2
+set sw=2
+set softtabstop=2               " Let backspace delete indent
+if has('win32')
+    au GUIEnter * simalt ~x
+else
+    au GUIEnter * call MaximizeWindow()
+endif
+ 
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+endfunction 
+
+nmap <c-v> p
+imap <c-v> <c-r>+
+cmap <c-v> <c-r>+
+
+
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
+            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+map <leader>j <C-W>j
+map <leader>k <C-W>k
+map <leader>h <C-W>h
+map <leader>l <C-W>l
+map <leader>c <C-W>c
+map <leader>o <C-W>o
+map <leader>- <C-W>_<C-W>\|
+unmap <leader>jt
+cunmap cwd
+
+nmap <leader>si <ESC>:silent! 
+map <leader>r <ESC>:CtrlPMRUFiles<CR>
+
+" rg
+if executable('rg')
+    set grepprg=rg\ --color=never\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ctrlp_user_command.fallback = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+    let g:ackprg = 'rg --vimgrep --no-heading'
+endif
+
+set runtimepath^=~/.vim/bundle/ag
+
+map W :w<CR>
