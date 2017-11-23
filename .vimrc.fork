@@ -22,6 +22,22 @@ function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction 
 
+" rg
+if executable('rg')
+    set grepprg=rg\ --color=never\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ctrlp_user_command.fallback = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+    let g:ackprg = 'rg --vimgrep --no-heading'
+endif
+
+" .spf13-vim-3/.vim/bundle/vim-coloresque/after/syntax/css/
+"  gg125
+
+:set isk+=-
+:set isk+=#
+:set isk+=.
+
 nmap <c-v> p
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
@@ -47,14 +63,6 @@ map Q :q<CR>
 nmap <leader>si <ESC>:silent! 
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
 
-" rg
-if executable('rg')
-    set grepprg=rg\ --color=never\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    let g:ctrlp_user_command.fallback = 'rg %s --files --color=never --glob ""'
-    let g:ctrlp_use_caching = 0
-    let g:ackprg = 'rg --vimgrep --no-heading'
-endif
 
 map W :w<CR>
 
