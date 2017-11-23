@@ -1,0 +1,7 @@
+" .vimrc.before.local
+
+let g:spf13_leader=' '
+let g:spf13_no_easyWindows = 1
+let g:spf13_no_autochdir = 1
+let g:spf13_edit_config_mapping='<leader>ue'
+let g:spf13_apply_config_mapping='<leader>us'
