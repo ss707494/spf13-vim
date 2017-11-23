@@ -1,5 +1,10 @@
 " .vimrc.before.local
-
+let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming',  'javascript', 'html', 'misc',]
+let g:spf13_leader=' '
+let g:spf13_no_easyWindows = 1
+let g:spf13_no_autochdir = 1
+let g:spf13_edit_config_mapping='<leader>ue'
+let g:spf13_apply_config_mapping='<leader>us'
 let g:spf13_leader=' '
 let g:spf13_no_easyWindows = 1
 let g:spf13_no_autochdir = 1

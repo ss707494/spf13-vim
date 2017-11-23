@@ -41,6 +41,8 @@ map <leader>o <C-W>o
 map <leader>- <C-W>_<C-W>\|
 unmap <leader>jt
 cunmap cwd
+map <leader>ee :NERDTreeFind<CR>
+map Q :q<CR>
 
 nmap <leader>si <ESC>:silent! 
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
@@ -54,6 +56,8 @@ if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
-set runtimepath^=~/.vim/bundle/ag
-
 map W :w<CR>
+
+" tags
+" set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
+map <C-F12> :!ctags -R --exclude=node_modules <CR> 
