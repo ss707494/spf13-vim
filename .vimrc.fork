@@ -22,7 +22,7 @@ function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction 
 
-nmap <c-v> p
+"nmap <c-v> p
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
 
@@ -36,12 +36,16 @@ map <leader>j <C-W>j
 map <leader>k <C-W>k
 map <leader>h <C-W>h
 map <leader>l <C-W>l
-map <leader>c <C-W>c
+map <leader>x :q<CR>
 map <leader>o <C-W>o
 map <leader>- <C-W>_<C-W>\|
 unmap <leader>jt
 cunmap cwd
-map <leader>ee :NERDTreeFind<CR>
+cmap cd, cd %:p:h
+unmap <leader>ew
+unmap <leader>es
+unmap <leader>ev
+unmap <leader>et
 map Q :q<CR>
 
 nmap <leader>si <ESC>:silent! 
@@ -60,4 +64,4 @@ map W :w<CR>
 
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
-map <C-F12> :!ctags -R --exclude=node_modules <CR> 
+map <C-F12> :!ctags -R --exclude=node_modules --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
