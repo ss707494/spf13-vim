@@ -47,6 +47,8 @@ unmap <leader>es
 unmap <leader>ev
 unmap <leader>et
 map Q :q<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+map <leader>oe :!start explorer %:p:h<Cr>
 
 nmap <leader>si <ESC>:silent! 
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
