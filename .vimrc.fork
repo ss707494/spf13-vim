@@ -36,24 +36,27 @@ endif
 "  gg125
 
 " 菜单配置
-let g:ssMenuList = [ "choose:" , ":echo '123'|!start cmd" ]
-call add(g:ssMenuList, "!start Powershell")
-call add(g:ssMenuList, "echo '打开当前目录'|!start explorer %:p:h")
+let g:ssMenuList = ["choose:"]
+call add(g:ssMenuList, "echo '打开当前目录   '|!start explorer %:p:h")
+call add(g:ssMenuList, "echo '123            '|!start cmd")
+call add(g:ssMenuList, "echo '123            '|cd %:p:h")
+call add(g:ssMenuList, "echo '123            '|lcd %:p:h")
+call add(g:ssMenuList, "echo '123            '|!start Powershell")
 
 function! SSMenu()
   let s:_cmd = ""
   let s:_inputList = map(copy(g:ssMenuList), {key, val -> ' ' . key . ': ' . val})
   let s:_cmd = inputlist(s:_inputList)
   if s:_cmd>0
-    exe get(g:ssMenuList, s:_cmd)
+    exe get(g:ssMenuList, s:_cmd) 
   endif
 endfunction
-"let g:ssMenuList+=["!start Powershell"]
-
 map <leader>s :call SSMenu()<CR>
+
 unmap <leader>ss
 unmap <leader>sl
 unmap <leader>sc
+cunmap w!!
 ":map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
   "
 :set isk+=-
@@ -62,7 +65,6 @@ unmap <leader>sc
 
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
-
 
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
@@ -78,14 +80,13 @@ map <leader>o <C-W>o
 map <leader>- <C-W>_<C-W>\|
 unmap <leader>jt
 cunmap cwd
-cmap cd, cd %:p:h
+cunmap cd.
 unmap <leader>ew
 unmap <leader>es
 unmap <leader>ev
 unmap <leader>et
 map Q :q<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
-map <leader>oe :!start explorer %:p:h<Cr>
 
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
 
