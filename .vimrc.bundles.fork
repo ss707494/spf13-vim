@@ -1,3 +1,6 @@
 UnBundle 'amirh/HTML-AutoCloseTag'
 
+Bundle 'maxmellon/vim-jsx-pretty'
+Bundle 'tern_for_vim'
+
 " 

@@ -59,9 +59,9 @@ unmap <leader>sc
 cunmap w!!
 ":map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
   "
-:set isk+=-
-:set isk+=#
-:set isk+=.
+:set isk-=-
+:set isk-=#
+:set isk-=.
 
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
