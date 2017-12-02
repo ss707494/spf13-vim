@@ -1,12 +1,11 @@
 set guifont=Andale_Mono:h16,Menlo:h16,Consolas:h16,Courier_New:h16
 set wrap
-
 set rnu!
 set ignorecase
 set hlsearch
 set nospell
 set autowrite                       " Automatically write a file when leaving a modified buffer
-"set autowriteall
+set autowriteall
 set autoread
 set go-=m
 set ts=2
@@ -17,7 +16,10 @@ if has('win32')
 else
     au GUIEnter * call MaximizeWindow()
 endif
- 
+
+
+
+" 窗口最大化
 function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction 
@@ -36,40 +38,65 @@ endif
 "  gg125
 
 " 菜单配置
-let g:ssMenuList = ["choose:"]
-call add(g:ssMenuList, "echo '打开当前目录   '|!start explorer %:p:h")
-call add(g:ssMenuList, "echo '123            '|!start cmd")
-call add(g:ssMenuList, "echo '123            '|cd %:p:h")
-call add(g:ssMenuList, "echo '123            '|lcd %:p:h")
-call add(g:ssMenuList, "echo '123            '|!start Powershell")
 
-function! SSMenu()
-  let s:_cmd = ""
-  let s:_inputList = map(copy(g:ssMenuList), {key, val -> ' ' . key . ': ' . val})
-  let s:_cmd = inputlist(s:_inputList)
-  if s:_cmd>0
-    exe get(g:ssMenuList, s:_cmd) 
-  endif
+let g:ssData = { "menuData": { "data": {}, "list": [] } }
+function! s:addMenuData(id, name, key, command) 
+  let s:_list = g:ssData.menuData.list
+  let s:_data = g:ssData.menuData.data
+  call add(s:_list, a:id)
+  let s:_data[a:id] = {'name': a:name, 'key': a:key, "command": a:command, 'num': 0}
 endfunction
-map <leader>s :call SSMenu()<CR>
+
+call s:addMenuData('0', "打开当前目录", 'e', '!start explorer %:p:h')
+call s:addMenuData('1', "打开cmd", 'c', '!start cmd')
+call s:addMenuData('2', "切换目录cd", '2', 'cd %:p:h')
+call s:addMenuData('3', "切换目录lcd", '3', 'lcd %:p:h')
+call s:addMenuData('4', "powershell", 'p', '!start Powershell')
+call s:addMenuData('5', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|exe \"normal '\".__inputtag")
+
+"if filereadable(expand("~/.spf13-vim-3/ssData"))
+  "so ~/.spf13-vim-3/ssData
+"endif
+  "let g:ssData = json_decode(join(readfile('~/.spf13-vim-3/ssData'), ''))
+
+  " 自动写入数据
+  "function! SSDataInput()
+    "call writefile([json_encode(g:ssData)], './.spf13-vim-3/ssData')
+  "endfunction
+  "autocmd VimLeavePre * call SSDataInput()
+
+if exists('ssData')
+  function! SSMenu()
+    let s:_cmd = ""
+    let s:_data = g:ssData.menuData.data
+    let s:_idlist = g:ssData.menuData.list
+    let s:_inputList = map(copy(s:_idlist), {key, val -> ' ' . get(s:_data, val).key . ' || ' . get(s:_data, val).name . ' ('  . get(s:_data, val).command . ')--'. get(s:_data, val).num})
+    echo join(s:_inputList, "\n")."\n"
+    let s:_cmd = nr2char(getchar())
+    for item in s:_idlist
+      if s:_data[item].key == s:_cmd
+        let s:__com = s:_data[item].command
+        let s:_data[item].num+=1
+        exe s:__com
+      endif
+    endfor
+  endfunction
+
+  map <leader>s :call SSMenu()<CR>
+endif
+
+:set isk-=-
+:set isk-=#
+:set isk-=.
+
 
 unmap <leader>ss
 unmap <leader>sl
 unmap <leader>sc
 cunmap w!!
 ":map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-  "
-:set isk-=-
-:set isk-=#
-:set isk-=.
-
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
-
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 map <leader>j <C-W>j
 map <leader>k <C-W>k
@@ -87,12 +114,15 @@ unmap <leader>ev
 unmap <leader>et
 map Q :q<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
-
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
-
-
 map W :w<CR>
 
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 map <C-F12> :!ctags -R --exclude=node_modules --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
+
+" ctrlp
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
+            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
