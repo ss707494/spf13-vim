@@ -11,6 +11,7 @@ set go-=m
 set ts=2
 set sw=2
 set softtabstop=2               " Let backspace delete indent
+set fileencodings=utf-8,gbk,gb18030,gk2312
 if has('win32')
     au GUIEnter * simalt ~x
 else
