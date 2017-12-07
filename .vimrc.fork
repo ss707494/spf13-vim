@@ -12,18 +12,21 @@ set ts=2
 set sw=2
 set softtabstop=2               " Let backspace delete indent
 set fileencodings=utf-8,gbk,gb18030,gk2312
+set isk-=-
+set isk-=#
+set isk-=.
+
 if has('win32')
     au GUIEnter * simalt ~x
 else
     au GUIEnter * call MaximizeWindow()
 endif
 
-
-
 " 窗口最大化
 function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction 
+
 
 "nmap <c-v> p
 " rg
@@ -53,13 +56,12 @@ call s:addMenuData('1', "打开cmd", 'c', '!start cmd')
 call s:addMenuData('2', "切换目录cd", '2', 'cd %:p:h')
 call s:addMenuData('3', "切换目录lcd", '3', 'lcd %:p:h')
 call s:addMenuData('4', "powershell", 'p', '!start Powershell')
-call s:addMenuData('5', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|exe \"normal '\".__inputtag")
+call s:addMenuData('5', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 
 "if filereadable(expand("~/.spf13-vim-3/ssData"))
   "so ~/.spf13-vim-3/ssData
 "endif
   "let g:ssData = json_decode(join(readfile('~/.spf13-vim-3/ssData'), ''))
-
   " 自动写入数据
   "function! SSDataInput()
     "call writefile([json_encode(g:ssData)], './.spf13-vim-3/ssData')
@@ -79,18 +81,13 @@ if exists('ssData')
         let s:__com = s:_data[item].command
         let s:_data[item].num+=1
         exe s:__com
+        :redraw
       endif
     endfor
   endfunction
 
   map <leader>s :call SSMenu()<CR>
 endif
-
-:set isk-=-
-:set isk-=#
-:set isk-=.
-
-
 unmap <leader>ss
 unmap <leader>sl
 unmap <leader>sc
@@ -98,7 +95,6 @@ cunmap w!!
 ":map <F4> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 imap <c-v> <c-r>+
 cmap <c-v> <c-r>+
-
 map <leader>j <C-W>j
 map <leader>k <C-W>k
 map <leader>h <C-W>h
@@ -117,7 +113,6 @@ map Q :q<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
 map W :w<CR>
-
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 map <C-F12> :!ctags -R --exclude=node_modules --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
