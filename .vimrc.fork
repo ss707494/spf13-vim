@@ -73,7 +73,7 @@ if exists('ssData')
   function! SSMenu()
     let s:_cmd = ""
     let s:_data = g:ssData.menuData.data
-    let s:_idlist = g:ssData.menuData.list
+    let s:_idlist = sort(copy( g:ssData.menuData.list ), "Compare_")
     let s:_inputList = map(copy(s:_idlist), {key, val -> ' ' . get(s:_data, val).key . ' || ' . get(s:_data, val).name . ' ('  . get(s:_data, val).command . ')--'. get(s:_data, val).num})
     echo join(s:_inputList, "\n")."\n"
     let s:_cmd = nr2char(getchar())
@@ -85,6 +85,9 @@ if exists('ssData')
         :redraw
       endif
     endfor
+  endfunction
+  function! Compare_(i1, i2) abort
+    return get(s:_data, a:i1).num - get(s:_data, a:i2).num
   endfunction
 
   map <leader>s :call SSMenu()<CR>
