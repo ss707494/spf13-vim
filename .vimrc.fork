@@ -57,6 +57,7 @@ call s:addMenuData('2', "切换目录cd", '2', 'cd %:p:h')
 call s:addMenuData('3', "切换目录lcd", '3', 'lcd %:p:h')
 call s:addMenuData('4', "powershell", 'p', '!start Powershell')
 call s:addMenuData('5', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
+call s:addMenuData('6', "Session", 'l', "SessionList")
 
 "if filereadable(expand("~/.spf13-vim-3/ssData"))
   "so ~/.spf13-vim-3/ssData
