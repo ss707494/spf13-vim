@@ -1,6 +1,9 @@
 UnBundle 'amirh/HTML-AutoCloseTag'
+UnBundle 'vim-scripts/sessionman.vim'
 
 Bundle 'maxmellon/vim-jsx-pretty'
 Bundle 'tern_for_vim'
+Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-misc'
 
 " 
