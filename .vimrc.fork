@@ -140,7 +140,7 @@ unmap <leader>et
 map Q :q<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
-map W :w<CR>
+map W :wa<CR>
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
 map <C-F12> :!ctags -R --exclude=node_modules --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
