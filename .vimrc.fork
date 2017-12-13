@@ -142,7 +142,7 @@ map <leader>r <ESC>:CtrlPMRUFiles<CR>
 "map Q :q<CR>
 "map <s-w> :wa<CR>
 map <leader>w :wa<CR>
-map <leader>q :qa<CR>
+map <leader>q :q<CR>
 
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
