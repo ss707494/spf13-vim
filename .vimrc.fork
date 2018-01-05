@@ -94,15 +94,15 @@ call s:addMenuData('menuData', "切换目录lcd", '3', 'lcd %:p:h')
 call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
+call s:addMenuData('menuData', "Restart", 'r', "SessionOpen")
 "call s:addMenuData(g:ssData['testData'], "Session", 'l', "SessionOpen")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
 endif
 
 call s:addMenuData('testData', "Session", 'l', "SessionOpen")
-if has_key(g:ssData, 'testData')
-  map <leader>t :call SSMenu(g:ssData.testData)<CR>
-endif
+map <leader>t :call SSMenu(g:ssData.testData)<CR>
+
 "if filereadable(expand("~/.spf13-vim-3/ssData"))
   "so ~/.spf13-vim-3/ssData
 "endif
@@ -139,10 +139,9 @@ unmap <leader>ev
 unmap <leader>et
 nnoremap <silent> <leader>gd :Gdiff<CR>
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
-"map Q :q<CR>
-"map <s-w> :wa<CR>
-map <leader>w :wa<CR>
+map <leader>w :call confirm('已经改了!!')<CR>
 map <leader>q :q<CR>
+inoremap <Esc> <Esc>:wa<CR>
 
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
@@ -153,3 +152,4 @@ let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
