@@ -94,7 +94,7 @@ call s:addMenuData('menuData', "切换目录lcd", '3', 'lcd %:p:h')
 call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
-call s:addMenuData('menuData', "Restart", 'r', "SessionOpen")
+call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
 "call s:addMenuData(g:ssData['testData'], "Session", 'l', "SessionOpen")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
