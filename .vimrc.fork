@@ -102,6 +102,7 @@ endif
 
 call s:addMenuData('testData', "Session", 'l', "SessionOpen")
 map <leader>t :call SSMenu(g:ssData.testData)<CR>
+unmap <leader>tt
 
 "if filereadable(expand("~/.spf13-vim-3/ssData"))
   "so ~/.spf13-vim-3/ssData
