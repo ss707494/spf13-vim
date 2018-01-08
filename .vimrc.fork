@@ -95,7 +95,7 @@ call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
 call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
-"call s:addMenuData(g:ssData['testData'], "Session", 'l', "SessionOpen")
+call s:addMenuData('menuData', "ResetVimrc", '7', "so ~/.vimrc")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
 endif
@@ -141,7 +141,7 @@ nnoremap <silent> <leader>gd :Gdiff<CR>
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
 map <leader>w :call confirm('已经改了!!')<CR>
 map <leader>q :q<CR>
-inoremap <Esc> <Esc>:wa<CR>
+"inoremap <Esc> <Esc>:wa<CR>
 
 " tags
 " set tags=tags;  " ; 不可省略，表示若当前目录中不存在tags， 则在父目录中寻找。
@@ -153,3 +153,6 @@ let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_write_all_buffers = 1

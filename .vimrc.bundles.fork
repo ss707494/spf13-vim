@@ -6,5 +6,6 @@ Bundle 'maxmellon/vim-jsx-pretty'
 Bundle 'tern_for_vim'
 Bundle 'xolox/vim-session'
 Bundle 'xolox/vim-misc'
+Bundle '907th/vim-auto-save'
 
 " 
