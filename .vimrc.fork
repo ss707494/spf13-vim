@@ -137,6 +137,7 @@ unmap <leader>ew
 unmap <leader>es
 unmap <leader>ev
 unmap <leader>et
+unmap <leader>sv
 nnoremap <silent> <leader>gd :Gdiff<CR>
 map <leader>r <ESC>:CtrlPMRUFiles<CR>
 map <leader>w :call confirm('已经改了!!')<CR>
