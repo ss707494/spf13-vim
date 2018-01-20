@@ -1,3 +1,8 @@
+
+"............. 配置项
+
+let s:gitPath = "E:/ss707494/app/Git"
+
 set guifont=Andale_Mono:h16,Menlo:h16,Consolas:h16,Courier_New:h16
 set wrap
 set rnu!
@@ -95,6 +100,7 @@ call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
 call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
+call s:addMenuData('menuData', "GitBash", 'g', "!start ". s:gitPath . "/bin/sh.exe -login -i")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
 endif
