@@ -1,8 +1,13 @@
 
 "............. 配置项
 
-let s:gitPath = "E:/ss707494/app/Git"
-"let s:gitPath = "C:/Program Files/Git"
+if filereadable(expand("./.vimrc.ssconfig"))
+  source ./.vimrc.ssconfig
+endif
+if !exists('g:gitPath')
+  let g:gitPath = "E:/ss707494/app/Git"
+  "let g:gitPath = "C:/Program Files/Git"
+endif
 
 set guifont=Andale_Mono:h16,Menlo:h16,Consolas:h16,Courier_New:h16
 set wrap
@@ -101,7 +106,7 @@ call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
 call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
-call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start ". s:gitPath . "/bin/sh.exe -login -i")
+call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start ". g:gitPath . "/bin/sh.exe -login -i")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
 endif
@@ -157,7 +162,8 @@ map <leader>q :q<CR>
 map <C-F12> :!ctags -R --exclude=node_modules --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
 
 " ctrlp
-let g:ctrlp_working_path_mode = 'a'
+"let g:ctrlp_working_path_mode = 'a'
+"let g:ctrlp_root_markers = []
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
             \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
