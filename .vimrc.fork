@@ -1,3 +1,4 @@
+"
 "............. 配置项
 
 if filereadable(expand("./.vimrc.ssconfig"))
