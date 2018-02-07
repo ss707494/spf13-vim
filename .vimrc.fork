@@ -97,6 +97,27 @@ endfunction
   function! Compare_(i1, i2) abort
     return get(s:_data, a:i1).num - get(s:_data, a:i2).num
   endfunction
+function! PutInReg(str, ...)
+  let s:_n = "+"
+  if !empty(a:000) 
+    let s:_n = a:1
+  endif
+  exe "normal O" .  a:str
+  exe "normal ^v$h\"".s:_n."y"
+  exe "normal \"_dd"
+endfunction
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
 
 call s:addMenuData('menuData', "打开当前目录", 'e', '!start explorer %:p:h')
 call s:addMenuData('menuData', "打开cmd", 'c', '!start cmd')
@@ -104,17 +125,22 @@ call s:addMenuData('menuData', "切换目录cd", '2', 'cd %:p:h')
 call s:addMenuData('menuData', "切换目录lcd", '3', 'lcd %:p:h')
 call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
-call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
-call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
+"call s:addMenuData('menuData', "Session", 'l', "SessionOpen")
+"call s:addMenuData('menuData', "Restart", 'r', "RestartVim")
+call s:addMenuData('menuData', "ResetVimrc", 'v', "so ~/.vimrc")
 call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start ". g:gitPath . "/bin/sh.exe -login -i")
 if has_key(g:ssData, 'menuData')
   map <leader>s :call SSMenu(g:ssData.menuData)<CR>
 endif
 
-call s:addMenuData('optionData', "ResetVimrc", 's', "so ~/.vimrc")
-call s:addMenuData('optionData', "EditSessionList", 'p', "e ~/vimfiles/sessions/")
-call s:addMenuData('optionData', "ShowSession", 't', "echo v:this_session")
-map <leader>u :call SSMenu(g:ssData.optionData)<CR>
+"call s:addMenuData('optionData', "EditSessionList", 'p', "e ~/vimfiles/sessions/")
+"call s:addMenuData('optionData', "ShowSession", 't', "echo v:this_session")
+"map <leader>u :call SSMenu(g:ssData.optionData)<CR>
+
+call s:addMenuData('commands', "cachetxt", 'c', "exe 'vs' | e ~/cachetxt")
+call s:addMenuData('commands', "git pull --rebase", 'l', "!git pull --rebase")
+call s:addMenuData('commands', "update-index", 'u', "call PutInReg('git update-index --assume-unchanged ')")
+map <leader>m :call SSMenu(g:ssData.commands)<CR>
 
 "if filereadable(expand("~/.spf13-vim-3/ssData"))
   "so ~/.spf13-vim-3/ssData
