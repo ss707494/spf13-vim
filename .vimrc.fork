@@ -1,8 +1,8 @@
 "
 "............. 配置项
 
-if filereadable(expand("./.vimrc.ssconfig"))
-  source ./.vimrc.ssconfig
+if filereadable(expand("~/.spf13-vim-3/.vimrc.ssconfig"))
+  source ~/.spf13-vim-3/.vimrc.ssconfig
 endif
 if !exists('g:gitPath')
   let g:gitPath = "E:/ss707494/app/Git"
