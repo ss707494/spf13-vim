@@ -9,3 +9,5 @@ port  http://104.225.154.119
 
 silent !c:&& cd C:\Program Files\PuTTY && start putty.exe -load "ss" -l "root" -pw "9ssrm5tbDue5"
 
+nohup http-server &
+

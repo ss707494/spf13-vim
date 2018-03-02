@@ -138,6 +138,7 @@ endif
 "map <leader>u :call SSMenu(g:ssData.optionData)<CR>
 
 call s:addMenuData('commands', "cachetxt", 'c', "exe 'vs' | e ~/.spf13-vim-3/cachetxt")
+call s:addMenuData('commands', "mostCmd", 'm', "exe 'vs' | e ~/.spf13-vim-3/mostCmd")
 call s:addMenuData('commands', "git pull --rebase", 'l', "!git pull --rebase")
 call s:addMenuData('commands', "update-index", 'u', "call PutInReg('git update-index --assume-unchanged ')")
 map <leader>m :call SSMenu(g:ssData.commands)<CR>
