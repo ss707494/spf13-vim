@@ -174,37 +174,37 @@ Loop, %scriptCount%
 }
 Return
 
-+^!Z::
-    Menu, Tray, Show
-Return
-
-+^!X::
-	Goto Menu_Tray_Exit
-Return
-
-+^!Q::
-	Goto tsk_openAll
-Return
-
-+^!W::
-	Menu, scripts_unopen, Show
-Return
-
-+^!A::
-	Goto tsk_closeAll
-Return
+;+^!Z::
+;    Menu, Tray, Show
+;Return
+;
+;+^!X::
+;	Goto Menu_Tray_Exit
+;Return
+;
+;+^!Q::
+;	Goto tsk_openAll
+;Return
+;
+;+^!W::
+;	Menu, scripts_unopen, Show
+;Return
+;
+;+^!A::
+;	Goto tsk_closeAll
+;Return
 
 ;+^!S::
 ;	Menu, scripts_unclose, Show
 ;Return
 
-+^!E::
-	Menu, scripts_edit, Show
-Return
-
-+^!D::
-	Menu, scripts_reload, Show
-Return
+;+^!E::
+;	Menu, scripts_edit, Show
+;Return
+;
+;+^!D::
+;	Menu, scripts_reload, Show
+;Return
 
 Menu_Tray_OpenDir:
 	Run %A_ScriptDir%
