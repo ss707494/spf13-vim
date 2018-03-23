@@ -25,8 +25,8 @@ send, {down %autoRunNum%}
 SetTimer, autoRun, 5000  
 return
 x:: SetTimer, autoRun, Off  
-!1::autoRunNum:=1*5
-!2::autoRunNum:=2*5
-!3::autoRunNum:=5*3
-!4::autoRunNum:=5*4
+!q::autoRunNum:=1*5
+!w::autoRunNum:=2*5
+!e::autoRunNum:=5*3
+!r::autoRunNum:=5*4
 #IfWinActive
