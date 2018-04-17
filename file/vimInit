@@ -1,0 +1,13 @@
+
+dul
+py+
+
+.spf13-vim-3/.vim/bundle/vim-coloresque/after/syntax/css/
+ gg125
+
+ gg301
+call s:MatchColorValue(strpart(w:colorDict[tolower(_color)], 1), '\(^\|\s\|:\)\@<=\c'._color.'\($\|\s\|;\)\@=')
+
+choco install ack 
+
+choco install ag 

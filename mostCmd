@@ -11,3 +11,4 @@ silent !c:&& cd C:\Program Files\PuTTY && start putty.exe -load "ss" -l "root" -
 
 nohup http-server &
 
+ git update-index --assume-unchanged <files>
