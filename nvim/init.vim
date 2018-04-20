@@ -8,13 +8,12 @@
 
 
 " SpaceVim Options: {{{
-let g:spacevim_enable_debug = 1
-let g:spacevim_realtime_leader_guide = 1
-let g:spacevim_enable_os_fileformat_icon = 1
-let g:spacevim_enable_vimfiler_welcome = 1
-let g:spacevim_enable_debug = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tmuxline#enabled = 0
+"let g:spacevim_vimcompatible           = 1
+let g:python_host_prog = 'C:/Python27/python.exe'
+let g:python3_host_prog = 'C:/Python36/python.exe'
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowHidden=1
 
 let g:spacevim_filemanager = 'nerdtree'
 
@@ -38,10 +37,10 @@ let g:spacevim_guifont = 'DejaVu Sans Mono for Powerline:h14'
 "let mapleader = "\<Space>"
 
 "" 设置快捷窗口导航键(leader [Window]), 默认为 `s`
-let g:spacevim_windows_leader = '<space>\\'
+let g:spacevim_windows_leader = '\<PageUp>'
 
 "" 设置 unite 工作流程快捷导航键(shortcut leader [Unite]), 默认为 `f`
-let g:spacevim_unite_leader = '\f'
+" let g:spacevim_unite_leader = '\<PageDown>'
 
 "" 在默认情况下,个别语言插件未加载. 可以按照下面的方法来更改. 
 "" 下面的更改完成后, go语言的开发工具就会被加载.
@@ -51,8 +50,6 @@ let g:spacevim_unite_leader = '\f'
 "call SpaceVim#layers#load('ui')
 
 let g:spacevim_custom_plugins = [
-      \ ['mileszs/ack.vim'],
-      \ ['mattn/emmet-vim']
     \ ]
 
 " }}}
@@ -67,10 +64,12 @@ endif
 
 " SpaceVim Layers: {{{
  call SpaceVim#layers#load('git')
- call SpaceVim#layers#load('ctrlp')
+ " call SpaceVim#layers#load('ctrlp')
  call SpaceVim#layers#load('unite')
  call SpaceVim#layers#load('denite')
  call SpaceVim#layers#load('VersionControl')
+ call SpaceVim#layers#load('lang#html')
+ call SpaceVim#layers#load('lang#javascript')
 
 let g:ssData = {}
 function! s:addMenuData(menuStr, name, key, command) 
@@ -138,6 +137,7 @@ call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(get
 call s:addMenuData('menuData', "ResetVimrc", 'v', "so ~/.vimrc")
 call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start \"". g:gitPath . "/bin/sh.exe -login -i\"")
 call s:addMenuData('menuData', "GitInNvim", 'h', "cd %:p:h | ter \"". g:gitPath . "/bin/sh.exe\" -login -i")
+call s:addMenuData('menuData', "Grep", 'a', "Denite grep")
 
 call s:addMenuData('commands', "cachetxt", 'c', "exe 'vs' | e ~/.spf13-vim-3/cachetxt")
 call s:addMenuData('commands', "mostCmd", 'm', "exe 'vs' | e ~/.spf13-vim-3/mostCmd")
@@ -146,6 +146,9 @@ call s:addMenuData('commands', "update-index", 'u', "call PutInReg('git update-i
 
 " }}}
 
+set autowrite                       " Automatically write a file when leaving a modified buffer
+set autowriteall
+set autoread
 set wrap
 set ignorecase
 set hlsearch
@@ -155,6 +158,7 @@ set ts=2
 set sw=2
 set softtabstop=2               " Let backspace delete indent
 set fileencodings=utf-8,gbk,gb18030,gk2312
+set clipboard=unnamed
 
 map <Space>s :call SSMenu(g:ssData.menuData)<CR>
 map <Space>m :call SSMenu(g:ssData.commands)<CR>
@@ -165,22 +169,6 @@ map <Space>k <C-W>k
 map <Space>h <C-W>h
 map <Space>l <C-W>l
 map <Space>o <C-W>o
-map <Space>r <ESC>:CtrlPMRUFiles<CR>
+map <Space>r <ESC>:Denite file_mru<CR>
 map <Space>e <ESC>:NERDTreeFind<CR>
 
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.idea$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-elseif executable('ack')
-endif
-
-""function! SS#ConfigInit() abort
-""  set showtabline=0
-""endfunction
-""
-""autocmd VimEnter * call SS#ConfigInit()

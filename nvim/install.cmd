@@ -16,6 +16,7 @@ echo "                    版本 : 0.8.0-dev  中文官网 : https://spacevim.or
 Push-Location ~
 
 $app_name    = "SpaceVim"
+# $repo_url    = "https://github.com/ss707494/SpaceVim.git"
 $repo_url    = "https://github.com/SpaceVim/SpaceVim.git"
 $repo_name   = "SpaceVim"
 $repo_path   = "$HOME\.SpaceVim"
@@ -96,6 +97,8 @@ if (!(Test-Path "$HOME\AppData\Local\nvim")) {
   echo "[OK] $HOME\AppData\Local\nvim 已存在"
   sleep 1
 }
+
+call mklink "%HOME%\.SpaceVim.d\init.vim" "%HOME%\.spf13-vim-3\nvim\init.vim"
 
 echo ""
 echo "安装已完成!"
