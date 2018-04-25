@@ -141,6 +141,7 @@ map <Space>r <ESC>:Denite file_mru<CR>
 map <Space>e <ESC>:NERDTreeFind<CR>
 map j gj
 map k gk
+map <c-i> <c-i>
 
 " let g:spacevim_snippet_engine = 'ultisnips'
 " let g:spacevim_autocomplete_method = 'completor'
