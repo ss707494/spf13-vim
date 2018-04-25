@@ -6,48 +6,18 @@
 " License: GPLv3
 "=============================================================================
 
-
 " SpaceVim Options: {{{
-"let g:spacevim_vimcompatible           = 1
+" let g:spacevim_vimcompatible           = 1
 let g:python_host_prog = 'C:/Python27/python.exe'
 let g:python3_host_prog = 'C:/Python36/python.exe'
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
-
 let g:spacevim_filemanager = 'nerdtree'
-
 let g:spacevim_guifont = 'DejaVu Sans Mono for Powerline:h14'
-" 这是一些基础的定制信息, 请参阅 ~/.SpaceVim.d/init.vim
-" 文件来查看所有可能用到的配置信息:
-"let g:spacevim_default_indent = 3
-"let g:spacevim_max_column     = 80
-
-"" 更改默认的文件冗余备份目录.
-"" 默认的冗余备份目录为 ~/.cache/vimfiles.
-"let g:spacevim_plugin_bundle_dir = '~/.cache/vimfiles'
-
-"" 设置 SpaceVim 的配色方案
-"let g:spacevim_colorscheme = 'jellybeans'
-
-"" 设置你想使用的插件管理器, 默认为 dein.vim
-"let g:spacevim_plugin_manager = 'dein'  " neobundle or dein or vim-plug
-
-"" 使用空格键为导航键 `<Leader>`
-"let mapleader = "\<Space>"
-
-"" 设置快捷窗口导航键(leader [Window]), 默认为 `s`
+let g:spacevim_enable_ycm = 1
 let g:spacevim_windows_leader = '\<PageUp>'
 
-"" 设置 unite 工作流程快捷导航键(shortcut leader [Unite]), 默认为 `f`
-" let g:spacevim_unite_leader = '\<PageDown>'
-
-"" 在默认情况下,个别语言插件未加载. 可以按照下面的方法来更改. 
-"" 下面的更改完成后, go语言的开发工具就会被加载.
-""call SpaceVim#layers#load('lang#go')
-
-"" 加载用户界面层
-"call SpaceVim#layers#load('ui')
 
 let g:spacevim_custom_plugins = [
     \ ]
@@ -65,7 +35,7 @@ endif
 " SpaceVim Layers: {{{
  call SpaceVim#layers#load('git')
  " call SpaceVim#layers#load('ctrlp')
- call SpaceVim#layers#load('unite')
+ " call SpaceVim#layers#load('unite')
  call SpaceVim#layers#load('denite')
  call SpaceVim#layers#load('VersionControl')
  call SpaceVim#layers#load('lang#html')
@@ -136,7 +106,7 @@ call s:addMenuData('menuData', "powershell", 'p', '!start Powershell')
 call s:addMenuData('menuData', "marks", 'm', "marks|let __inputtag = nr2char(getchar())|redraw|exe \"normal '\".__inputtag")
 call s:addMenuData('menuData', "ResetVimrc", 'v', "so ~/.vimrc")
 call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start \"". g:gitPath . "/bin/sh.exe -login -i\"")
-call s:addMenuData('menuData', "GitInNvim", 'h', "cd %:p:h | ter \"". g:gitPath . "/bin/sh.exe\" -login -i")
+call s:addMenuData('menuData', "GitInNvim", 'h', "cd %:p:h | sp | ter \"". g:gitPath . "/bin/sh.exe\" -login -i")
 call s:addMenuData('menuData', "Grep", 'a', "Denite grep")
 
 call s:addMenuData('commands', "cachetxt", 'c', "exe 'vs' | e ~/.spf13-vim-3/cachetxt")
@@ -146,8 +116,6 @@ call s:addMenuData('commands', "update-index", 'u', "call PutInReg('git update-i
 
 " }}}
 
-set autowrite                       " Automatically write a file when leaving a modified buffer
-set autowriteall
 set autoread
 set wrap
 set ignorecase
@@ -171,4 +139,8 @@ map <Space>l <C-W>l
 map <Space>o <C-W>o
 map <Space>r <ESC>:Denite file_mru<CR>
 map <Space>e <ESC>:NERDTreeFind<CR>
+map j gj
+map k gk
 
+" let g:spacevim_snippet_engine = 'ultisnips'
+" let g:spacevim_autocomplete_method = 'completor'
