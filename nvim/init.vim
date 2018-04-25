@@ -15,9 +15,10 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:spacevim_filemanager = 'nerdtree'
 let g:spacevim_guifont = 'DejaVu Sans Mono for Powerline:h14'
-let g:spacevim_enable_ycm = 1
+let g:spacevim_enable_ycm = 0
+" let g:spacevim_snippet_engine = 'ultisnips'
+let g:spacevim_autocomplete_method = 'completor'
 let g:spacevim_windows_leader = '\<PageUp>'
-
 
 let g:spacevim_custom_plugins = [
     \ ]
@@ -143,5 +144,3 @@ map j gj
 map k gk
 map <c-i> <c-i>
 
-" let g:spacevim_snippet_engine = 'ultisnips'
-" let g:spacevim_autocomplete_method = 'completor'
