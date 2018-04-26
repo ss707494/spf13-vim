@@ -19,6 +19,10 @@ let g:spacevim_enable_ycm = 0
 " let g:spacevim_snippet_engine = 'ultisnips'
 let g:spacevim_autocomplete_method = 'completor'
 let g:spacevim_windows_leader = '\<PageUp>'
+let g:spacevim_wildignore
+      \ = '*/tmp/*,*.so,*.swp,*.zip,*.class,tags,*.jpg,
+      \*.ttf,*.TTF,*.png,*/target/*,
+      \.git,.svn,.hg,.DS_Store,*.svg,node_modules'
 
 let g:spacevim_custom_plugins = [
     \ ]
