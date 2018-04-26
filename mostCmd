@@ -1,4 +1,6 @@
 
+echo fnamemodify(bufname('%'), ':p')
+
 lcd %:p:h |!adb -d shell sh /data/data/me.piebridge.brevent/brevent.sh
 
 silent !e:&& cd E:\ss707494\app\adb\platform-tools && adb -d shell sh /data/data/me.piebridge.brevent/brevent.sh

@@ -109,6 +109,7 @@ call s:addMenuData('menuData', "ResetVimrc", 'v', "so ~/.vimrc")
 call s:addMenuData('menuData', "GitBash", 'g', "cd %:p:h | !start \"". g:gitPath . "/bin/sh.exe -login -i\"")
 call s:addMenuData('menuData', "GitInNvim", 'h', "cd %:p:h | sp | ter \"". g:gitPath . "/bin/sh.exe\" -login -i")
 call s:addMenuData('menuData', "Grep", 'a', "Denite grep")
+call s:addMenuData('menuData', "Show file path", 'l', "echo fnamemodify(bufname('%'), ':p')" )
 
 call s:addMenuData('commands', "cachetxt", 'c', "exe 'vs' | e ~/.spf13-vim-3/cachetxt")
 call s:addMenuData('commands', "mostCmd", 'm', "exe 'vs' | e ~/.spf13-vim-3/mostCmd")
