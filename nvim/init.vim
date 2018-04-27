@@ -24,8 +24,9 @@ let g:spacevim_wildignore
       \*.ttf,*.TTF,*.png,*/target/*,
       \.git,.svn,.hg,.DS_Store,*.svg,node_modules'
 
-let g:spacevim_custom_plugins = [
-    \ ]
+let g:spacevim_lint_on_save = 0
+let g:spacevim_custom_plugins = [ ]
+let g:spacevim_disabled_plugins=[ ]
 
 " }}}
 
@@ -44,7 +45,11 @@ endif
  call SpaceVim#layers#load('denite')
  call SpaceVim#layers#load('VersionControl')
  call SpaceVim#layers#load('lang#html')
- call SpaceVim#layers#load('lang#javascript')
+call SpaceVim#layers#load('lang#javascript',
+            \ {
+            \ 'auto_fix' : 1,
+            \ }
+            \ )
 
 let g:ssData = {}
 function! s:addMenuData(menuStr, name, key, command) 
@@ -122,7 +127,6 @@ call s:addMenuData('commands', "update-index", 'u', "call PutInReg('git update-i
 
 " }}}
 
-set autoread
 set wrap
 set ignorecase
 set hlsearch
