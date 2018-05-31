@@ -48,8 +48,8 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = " "
-let g:mapleader = " "
+" let mapleader = " "
+" let g:mapleader = " "
 "nnoremap <Space> <nop>
 
 " Fast saving
@@ -121,11 +121,11 @@ set wrap "Wrap lines
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamedplus
-map <leader>j <C-W>j
-map <leader>k <C-W>k
-map <leader>h <C-W>h
-map <leader>l <C-W>l
-map <leader>c <C-W>c
+map <space>j <C-W>j
+map <space>k <C-W>k
+map <space>h <C-W>h
+map <space>l <C-W>l
+map <space>c <C-W>c
 nmap <c-s> <c-v>
 
 "vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
@@ -134,9 +134,10 @@ nmap <c-s> <c-v>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-nmap <leader>r :action ChooseRunConfiguration<CR>
-nmap <leader>s :action QuickList.ss<CR>
-nmap <leader>e :action RecentFiles<CR>
-nnoremap <leader>f :action FindInPath<cr>
-vnoremap <leader>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
+"nmap <space>r :action ChooseRunConfiguration<CR>
+nmap <space>s :action QuickList.ss<CR>
+nmap <space>r :action RecentFiles<CR>
+nnoremap <space>f :action FindInPath<cr>
+vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
 
+nmap <space>e :action ActivateProjectToolWindow<CR>

@@ -5,3 +5,5 @@ http://localhost:9000/#/orderPay?param=%7B%22chargeMode%22%3A3%2C%22area%22%3A%2
 
 
 call mklink "%HOME%\.SpaceVim.d\init.vim" "%APP_PATH%\nvim\init.vim"
+
+! start "C:/Program Files/Git/bin/sh.exe" -login -i
