@@ -2,5 +2,6 @@
 *.pyc
 *._*
 .vim/
+.idea/
 .vimrc.ssconfig
 cachetxt

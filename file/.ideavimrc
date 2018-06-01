@@ -1,12 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
+" Version:
 "       5.0 - 29/05/12 15:43:36
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -19,7 +19,7 @@
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
@@ -55,7 +55,7 @@ set autoread
 " Fast saving
 "nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 "command W w !sudo tee % > /dev/null
 
@@ -74,9 +74,9 @@ set clipboard=unnamedplus
 set so=4
 set incsearch
 set nonu
-set lazyredraw 
+set lazyredraw
 set magic
-set showmatch 
+set showmatch
 set mat=2
 
 " No annoying sound on errors
@@ -93,7 +93,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -140,4 +140,4 @@ nmap <space>r :action RecentFiles<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
 
-nmap <space>e :action ActivateProjectToolWindow<CR>
+nmap <space>e :action SelectInProjectView<CR>
