@@ -15,7 +15,7 @@ nohup http-server &
 
  git update-index --assume-unchanged <files>
 
-git remote set-url origin 
+git remote set-url origin
 https://github.com/ss707494/SpaceVim.git
 
 ter runas /user:administrator cmd
@@ -24,4 +24,4 @@ cmd /c mklink "$HOME\.SpaceVim.d\init.vim" "$HOME\.spf13-vim-3\nvim\init.vim"
 
 call mklink "%HOME%\.SpaceVim.d\init.vim" "%HOME%\.spf13-vim-3\nvim\init.vim"
 
-call mklink "C:\Users\kxl\.ideavimrc" "C:\Users\kxl\.spf13-vim-3\file\.ideavimrc"
+call mklink "C:\Users\Administrator\.ideavimrc" "C:\Users\Administrator\.spf13-vim-3\file\.ideavimrc"

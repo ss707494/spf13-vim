@@ -16,7 +16,6 @@ echo "                    版本 : 0.8.0-dev  中文官网 : https://spacevim.or
 Push-Location ~
 
 $app_name    = "SpaceVim"
-# $repo_url    = "https://github.com/ss707494/SpaceVim.git"
 $repo_url    = "https://github.com/SpaceVim/SpaceVim.git"
 $repo_name   = "SpaceVim"
 $repo_path   = "$HOME\.SpaceVim"
@@ -79,16 +78,6 @@ if (!(Test-Path "$HOME\.SpaceVim")) {
 }
 
 echo ""
-# if (!(Test-Path "$HOME\vimfiles")) {
-  # cmd /c mklink $HOME\vimfiles $repo_path
-  # echo "[OK] 已为 vim 安装 SpaceVim"
-  # sleep 1
-# } else {
-  # echo "[OK] $HOME\vimfiles 已存在"
-  # sleep 1
-# }
-
-echo ""
 if (!(Test-Path "$HOME\AppData\Local\nvim")) {
   cmd /c mklink $HOME\AppData\Local\nvim $repo_path
   echo "[OK] 已为 neovim 安装 SpaceVim"
@@ -99,6 +88,7 @@ if (!(Test-Path "$HOME\AppData\Local\nvim")) {
 }
 
 call mklink "%HOME%\.SpaceVim.d\init.vim" "%HOME%\.spf13-vim-3\nvim\init.vim"
+call mklink "C:\Users\Administrator\AppData\Local\nvim" "C:\Users\Administrator\.SpaceVim\"
 
 echo ""
 echo "安装已完成!"
