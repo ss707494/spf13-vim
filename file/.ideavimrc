@@ -141,3 +141,4 @@ nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
 
 nmap <space>e :action SelectInProjectView<CR>
+nmap <space>o :action GotoAction<CR>
