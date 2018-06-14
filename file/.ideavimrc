@@ -142,4 +142,4 @@ vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<c
 
 nmap <space>e :action SelectInProjectView<CR>
 nmap <space>o :action GotoAction<CR>
-nmap / :action Find<CR>
+"nmap / :action Find<CR>
