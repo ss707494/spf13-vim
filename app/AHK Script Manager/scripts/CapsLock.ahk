@@ -27,11 +27,11 @@ singleKeyState := false
 SetCapsLockState, AlwaysOff
 
 ;窗口控制菜单---------------------
-;Menu windowMenu, Add, &1Top, winSet_1 
-;Menu windowMenu, Add, &2Max, winSet_2 
-;Menu windowMenu, Add, &3Min, winSet_3 
-;Menu windowMenu, Add, &4tranparent, winSet_4 
-;Menu windowMenu, Add, &5closeTran, winSet_5 
+;Menu windowMenu, Add, &1Top, winSet_1
+;Menu windowMenu, Add, &2Max, winSet_2
+;Menu windowMenu, Add, &3Min, winSet_3
+;Menu windowMenu, Add, &4tranparent, winSet_4
+;Menu windowMenu, Add, &5closeTran, winSet_5
 
 return
 ;-------------------------------
@@ -62,17 +62,17 @@ CapsLock & enter::send, ^+{enter}
 ;send, ^{F5}
 ;return
 
-#IfWinActive 
+#IfWinActive
 
 CapsLock::Send, {ESC}
 
 ;自定义 快捷启动----------------------------------
 
-CapsLock & q::send ,!{f9} ;listary 
+CapsLock & q::send ,!{f9} ;listary
 
 #IfWinActive ahk_exe Dict.exe
 CapsLock & w::Send, ^v
-#IfWinActive 
+#IfWinActive
 ;CapsLock & w::
 ;if getkeystate("alt")
 ;{
@@ -82,7 +82,7 @@ CapsLock & w::Send, ^v
 ;Process, exist, Dict.exe
 ;If ErrorLevel
 ;	goto , doDict
-;else 
+;else
 ;	goto, startDict
 ;return
 
@@ -97,7 +97,7 @@ goto, doDict
 return
 
 doDict:
-send ,^c  
+send ,^c
 sleep , 100
 send ,!{f10} ; dict
 return
@@ -106,6 +106,7 @@ return
 
 ;常用快捷键命令-------------------
 
+CapsLock & w::send, ^!w
 CapsLock & i::send, )
 CapsLock & u::send, (
 CapsLock & o::send , =
@@ -115,15 +116,15 @@ CapsLock & k::send, {up}
 CapsLock & l::send, {right}
 CapsLock & h::send, {left}
 CapsLock & n::send, {BS}
-CapsLock & b:: 
-Send, ^+{left} 
+CapsLock & b::
+Send, ^+{left}
 Sleep, 100
 Send, {BS}
 return
 
 ;CapsLock & d:: Send, {BS}
-;CapsLock & f:: 
-;Send, ^+{left} 
+;CapsLock & f::
+;Send, ^+{left}
 ;Sleep, 100
 ;Send, {BS}
 ;return
@@ -142,7 +143,7 @@ if CapsLockState = D                                                            
 else                                                                   ;|
   SetCapsLockState, AlwaysOn                                             ;|
 return
- 
+
 ; 音量控制
 CapsLock & up::SoundSetWaveVolume, +5
 CapsLock & down::SoundSetWaveVolume, -5
