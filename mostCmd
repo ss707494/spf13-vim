@@ -35,6 +35,8 @@ call mklink "C:\Users\Administrator\.ideavimrc" "C:\Users\Administrator\.spf13-v
 
 mklink /d "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks" "C:\Users\Administrator\.spf13-vim-3\file\chrome\Bookmarks"
 
-mklink /H bookmarks "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks"
+mklink "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks" "C:\Users\Administrator\.spf13-vim-3\file\chrome\test\Bookmarks"
+
+mklink /H Bookmarks "C:\Users\Administrator\.spf13-vim-3\file\chrome\Bookmarks"
 
 
