@@ -1,5 +1,5 @@
 {
-   "checksum": "3858b26b25377c0a181d7e618a12e429",
+   "checksum": "0e8f0ab3a9e60d52d1a33e842faf3e7e",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -3350,6 +3350,9 @@
             }, {
                "date_added": "13178193181000000",
                "id": "550",
+               "meta_info": {
+                  "last_visited_desktop": "13179571463055425"
+               },
                "name": "硬笔书法技巧",
                "type": "url",
                "url": "https://mp.weixin.qq.com/s?__biz=MzA5NzM4NzAzMA==&mid=2650630285&idx=4&sn=24b3171ec3968736ff2dfbdfdfca32fa&chksm=88a85ff4bfdfd6e2c408161a853b6f247899269c68207a30ff46b0493f0b0dbb0bbcc0cfe74f&scene=21#wechat_redirect"
@@ -4334,9 +4337,15 @@
                "name": "Vim Mastery: Finding Your Way Around",
                "type": "url",
                "url": "https://laracasts.com/series/vim-mastery/episodes/2?autoplay=true"
+            }, {
+               "date_added": "13178877221000000",
+               "id": "766",
+               "name": "拖拽至收藏",
+               "type": "url",
+               "url": "javascript:(function(){var w=window,d=w.document,b=d.body,s=d.createElement(\"script\");s.src=\"http://alloyteam.github.io/AlloyDesigner/release/alloydesigner.js\";b.appendChild(s);})();"
             } ],
             "date_added": "13179568960615879",
-            "date_modified": "0",
+            "date_modified": "13179570819763555",
             "id": "690",
             "name": "待整理",
             "type": "folder"
@@ -4666,21 +4675,21 @@
             "type": "url",
             "url": "https://www.seasame.com.cn/"
          }, {
-            "date_added": "13178877221000000",
-            "id": "766",
-            "name": "拖拽至收藏",
-            "type": "url",
-            "url": "javascript:(function(){var w=window,d=w.document,b=d.body,s=d.createElement(\"script\");s.src=\"http://alloyteam.github.io/AlloyDesigner/release/alloydesigner.js\";b.appendChild(s);})();"
-         }, {
             "children": [ {
                "date_added": "13166008219000000",
                "id": "768",
+               "meta_info": {
+                  "last_visited_desktop": "13179571482896981"
+               },
                "name": "Vimperator标记",
                "type": "url",
                "url": "liberator://help/marks#bookmarks"
             }, {
                "date_added": "13166008219000000",
                "id": "769",
+               "meta_info": {
+                  "last_visited_desktop": "13179571485193813"
+               },
                "name": "【11月】灌篮高手HD 17-18【52wy】下载(AV860214)-哔哩哔哩唧唧-bilibili视频|弹幕在线下载",
                "type": "url",
                "url": "http://www.bilibilijj.com/Video/Av860214"
