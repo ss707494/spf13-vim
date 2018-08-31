@@ -37,6 +37,8 @@ mklink /d "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks" "C:\
 
 mklink /H "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks" "C:\Users\kxl\.spf13-vim-3\file\chrome\Bookmarks"
 
+mklink /H "C:\Users\kxl\.spf13-vim-3\file\Bookmarks" "C:\ss707494\app\MyChrome v3.8.1 x64\User Data\Default\Bookmarks"
+
 mklink /H Bookmarks "C:\Users\Administrator\.spf13-vim-3\file\chrome\Bookmarks"
 
 
