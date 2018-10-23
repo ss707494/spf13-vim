@@ -46,10 +46,10 @@ SetCapsLockState, AlwaysOff
 CapsLock & enter::send, ^+{enter}
 ;CapsLock & s::send, ^{Numpad4}
 
-;CapsLock & e::
-;send, ^e
+CapsLock & s::
+send, ^s
 ;vimArrKeyState := true
-;return
+return
 ;CapsLock & 2::
 ;send, ^{F2}
 ;vimArrKeyState := true
