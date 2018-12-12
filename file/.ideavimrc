@@ -126,7 +126,7 @@ map <space>k <C-W>k
 map <space>h <C-W>h
 map <space>l <C-W>l
 map <space>c <C-W>c
-nmap <c-s> <c-v>
+"nmap <c-s> <c-v>
 
 "vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     ":<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv

@@ -70,9 +70,9 @@ CapsLock::Send, {ESC}
 
 CapsLock & q::send ,!{f9} ;listary
 
-#IfWinActive ahk_exe Dict.exe
-CapsLock & w::Send, ^v
-#IfWinActive
+;#IfWinActive ahk_exe Dict.exe
+;CapsLock & w::Send, ^v
+;#IfWinActive
 ;CapsLock & w::
 ;if getkeystate("alt")
 ;{
@@ -89,18 +89,18 @@ CapsLock & w::Send, ^v
 
 ;快捷启动 标签----------------------------------------
 
-startDict:
-run D:\Documents\ss\ruanjian\Dict4\Dict.exe
-;dictRun :=1
-sleep 1999
-goto, doDict
-return
+;startDict:
+;run D:\Documents\ss\ruanjian\Dict4\Dict.exe
+;;dictRun :=1
+;sleep 1999
+;goto, doDict
+;return
 
-doDict:
-send ,^c
-sleep , 100
-send ,!{f10} ; dict
-return
+;doDict:
+;send ,^c
+;sleep , 100
+;send ,!{f10} ; dict
+;return
 
 ;状态变量 -----------------------------------
 
@@ -133,8 +133,8 @@ CapsLock & 8:: Send, ^+{TAB}
 CapsLock & 9:: Send, ^{TAB}
 CapsLock & 0:: Send, ^w
 
-CapsLock & x:: Send, ^x                 ; X = Cut
-CapsLock & c:: send, ^c
+;CapsLock & x:: Send, ^x                 ; X = Cut
+;CapsLock & c:: send, ^c
 CapsLock & v::send, ^``         ; V = Paste
 CapsLock & a::
 GetKeyState, CapsLockState, CapsLock, T                                 ;|
@@ -175,40 +175,5 @@ tooltip,
 ; 关闭鼠标提示
 return
 
-
-;HexPrefix = 0x
-;; 16进制数前缀
-
-;StringLeft colorRedHex,color,2
-;;从左至右截取字符串“color”2个字符，赋值给”colorRedHex“
-
-;;StringCenter colorGreenHex,color,2
-;;呃，，我想当然的以为有这个函数。。
-
-;colorGreenHex := SubStr(color,3,2)
-;;截取字符串“color”，从左至右第3个字符开始（包括第三个，起始为1不是0），去掉从右至左2个字符。
-
-;StringRight colorBlueHex,color,2
-;;从右至左截取字符串“color”2个字符，赋值给“colorBlueHex”（截取后的子字符串依然是从左至右排序）
-
-;colorRedCode = %HexPrefix%%colorRedHex%
-;;拼接：16进制数前缀+16进制数简写=完整的16进制数
-;colorGreenCode = %HexPrefix%%colorGreenHex%
-;colorBlueCode = %HexPrefix%%colorBlueHex%
-
-;ToBase(h,b){
- ;return (h < b ? "" : ToBase(h//b,b)) . ((d:=Mod(h,b)) < 10 ? d : Chr(d+55))
- ;}
- ;;进制转换函数
-
- ;Red := ToBase(colorRedCode , 10)
- ;;依次调用进制转换函数：16转10
- ;Green := ToBase(colorGreenCode , 10)
- ;Blue := ToBase(colorBlueCode , 10)
-
- ;RGB =  %Red% %Green% %Blue%
- ;;拼接
-
- ;MsgBox, 64 , RGB , %RGB%
- ;;通过弹窗输出RGB信息
- ;return
+#j::send #^{left}
+#k::send #^{right}
