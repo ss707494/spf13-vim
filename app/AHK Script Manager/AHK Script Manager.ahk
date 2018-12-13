@@ -1,39 +1,39 @@
 ;====================================
-; À¶À¶Ð¡Ñ© ×÷Æ·
+; ï¿½ï¿½ï¿½ï¿½Ð¡Ñ© ï¿½ï¿½Æ·
 ; http://wwww.snow518.cn/
-; ÐÞ¸Ä×Ô£ºhttp://ahk.5d6d.com/thread-701-1-3.html
-; Ôö¼ÓÁË¿ì½Ý¼ü¡¢±à¼­¡¢ÖØÔØÄ³¸öµ¥¶ÀµÄ½Å±¾
+; ï¿½Þ¸ï¿½ï¿½Ô£ï¿½http://ahk.5d6d.com/thread-701-1-3.html
+; ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Å±ï¿½
 ;====================================
 #Persistent
 #SingleInstance force
 
 SetWorkingDir %A_ScriptDir%\scripts\
 
-DetectHiddenWindows On  ; ÔÊÐíÌ½²â½Å±¾ÖÐÒþ²ØµÄÖ÷´°¿Ú¡£
-SetTitleMatchMode 2  ; ±ÜÃâÐèÒªÖ¸¶¨ÈçÏÂËùÊ¾µÄÎÄ¼þµÄÍêÕûÂ·¾¶¡£
+DetectHiddenWindows On  ; ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½
+SetTitleMatchMode 2  ; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
 
 scriptCount = 0
 
 OnExit ExitSub
 
-Menu scripts_unopen, Add, Æô¶¯½Å±¾, Menu_Tray_Exit
-Menu scripts_unopen, ToggleEnable, Æô¶¯½Å±¾
-Menu scripts_unopen, Default, Æô¶¯½Å±¾
+Menu scripts_unopen, Add, ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½, Menu_Tray_Exit
+Menu scripts_unopen, ToggleEnable, ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
+Menu scripts_unopen, Default, ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
 Menu scripts_unopen, Add
-Menu scripts_unclose, Add, ¹Ø±Õ½Å±¾, Menu_Tray_Exit
-Menu scripts_unclose, ToggleEnable, ¹Ø±Õ½Å±¾
-Menu scripts_unclose, Default, ¹Ø±Õ½Å±¾
+Menu scripts_unclose, Add, ï¿½Ø±Õ½Å±ï¿½, Menu_Tray_Exit
+Menu scripts_unclose, ToggleEnable, ï¿½Ø±Õ½Å±ï¿½
+Menu scripts_unclose, Default, ï¿½Ø±Õ½Å±ï¿½
 Menu scripts_unclose, Add
-Menu scripts_edit, Add, ±à¼­½Å±¾, Menu_Tray_Exit
-Menu scripts_edit, ToggleEnable, ±à¼­½Å±¾
-Menu scripts_edit, Default, ±à¼­½Å±¾
+Menu scripts_edit, Add, ï¿½à¼­ï¿½Å±ï¿½, Menu_Tray_Exit
+Menu scripts_edit, ToggleEnable, ï¿½à¼­ï¿½Å±ï¿½
+Menu scripts_edit, Default, ï¿½à¼­ï¿½Å±ï¿½
 Menu scripts_edit, Add
-Menu scripts_reload, Add, ÖØÔØ½Å±¾, Menu_Tray_Exit
-Menu scripts_reload, ToggleEnable, ÖØÔØ½Å±¾
-Menu scripts_reload, Default, ÖØÔØ½Å±¾
+Menu scripts_reload, Add, ï¿½ï¿½ï¿½Ø½Å±ï¿½, Menu_Tray_Exit
+Menu scripts_reload, ToggleEnable, ï¿½ï¿½ï¿½Ø½Å±ï¿½
+Menu scripts_reload, Default, ï¿½ï¿½ï¿½Ø½Å±ï¿½
 Menu scripts_reload, Add
 
-; ±éÀúscriptsÄ¿Â¼ÏÂµÄahkÎÄ¼þ
+; ï¿½ï¿½ï¿½ï¿½scriptsÄ¿Â¼ï¿½Âµï¿½ahkï¿½Ä¼ï¿½
 Loop, %A_ScriptDir%\scripts\*.ahk
 {
     StringRePlace menuName, A_LoopFileName, .ahk
@@ -41,7 +41,7 @@ Loop, %A_ScriptDir%\scripts\*.ahk
     scriptCount += 1
     scripts%scriptCount%0 := A_LoopFileName
 
-    IfWinExist %A_LoopFileName% - AutoHotkey    ; ÒÑ¾­´ò¿ª
+    IfWinExist %A_LoopFileName% - AutoHotkey    ; ï¿½Ñ¾ï¿½ï¿½ï¿½
     {
         Menu scripts_unclose, add, %menuName%, tsk_close
         scripts%scriptCount%1 = 1
@@ -56,7 +56,7 @@ Loop, %A_ScriptDir%\scripts\*.ahk
 }
 
 
-; Ôö¼Ó¹ÜÀí°´Å¥
+; ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Å¥
 Menu, Tray, Icon, %A_ScriptDir%\resources\ahk.ico
 Menu, Tray, Click, 1
 Menu, Tray, Tip, AHK Script Manager
@@ -64,21 +64,21 @@ Menu, Tray, Add, AHK Script Manager, Menu_Show
 Menu, Tray, ToggleEnable, AHK Script Manager
 Menu, Tray, Default, AHK Script Manager
 Menu, Tray, Add
-Menu, Tray, Add, Æô¶¯ËùÓÐ½Å±¾(&A)`tCtrl + Alt + Shift + Q, tsk_openAll
-Menu, Tray, Add, Æô¶¯½Å±¾(&O)`tCtrl + Alt + Shift + W, :scripts_unopen
-Menu, Tray, Add, ¹Ø±ÕËùÓÐ½Å±¾(&L)`tCtrl + Alt + Shift + A, tsk_closeAll
-Menu, Tray, Add, ¹Ø±Õ½Å±¾(&C)`tCtrl + Alt + Shift + S, :scripts_unclose
+Menu, Tray, Add, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Å±ï¿½(&A)`tCtrl + Alt + Shift + Q, tsk_openAll
+Menu, Tray, Add, ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½(&O)`tCtrl + Alt + Shift + W, :scripts_unopen
+Menu, Tray, Add, ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ð½Å±ï¿½(&L)`tCtrl + Alt + Shift + A, tsk_closeAll
+Menu, Tray, Add, ï¿½Ø±Õ½Å±ï¿½(&C)`tCtrl + Alt + Shift + S, :scripts_unclose
 Menu, Tray, Add
-Menu, Tray, Add, ±à¼­½Å±¾(&I)`tCtrl + Alt + Shift + E, :scripts_edit
-Menu, Tray, Add, ÖØÔØ½Å±¾(&S)`tCtrl + Alt + Shift + D, :scripts_reload
+Menu, Tray, Add, ï¿½à¼­ï¿½Å±ï¿½(&I)`tCtrl + Alt + Shift + E, :scripts_edit
+Menu, Tray, Add, ï¿½ï¿½ï¿½Ø½Å±ï¿½(&S)`tCtrl + Alt + Shift + D, :scripts_reload
 Menu, Tray, Add
-Menu, Tray, Add, ´ò¿ª°éÂÂÄ¿Â¼(&D)`t%A_ScriptDir%, Menu_Tray_OpenDir
+Menu, Tray, Add, ï¿½ò¿ª°ï¿½ï¿½ï¿½Ä¿Â¼(&D)`t%A_ScriptDir%, Menu_Tray_OpenDir
 Menu, Tray, Add
-Menu, Tray, Add, ÖØÆô°éÂÂ(&R), Menu_Tray_Reload
+Menu, Tray, Add, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(&R), Menu_Tray_Reload
 Menu, Tray, Add
-Menu, Tray, Add, ±à¼­´úÂë(&E), Menu_Tray_Edit
+Menu, Tray, Add, ï¿½à¼­ï¿½ï¿½ï¿½ï¿½(&E), Menu_Tray_Edit
 Menu, Tray, Add
-Menu, Tray, Add, ÍË³ö(&X)`tCtrl + Alt + Shift + X, Menu_Tray_Exit
+Menu, Tray, Add, ï¿½Ë³ï¿½(&X)`tCtrl + Alt + Shift + X, Menu_Tray_Exit
 Menu, Tray, NoStandard
 
 GoSub tsk_openAll
@@ -89,11 +89,11 @@ tsk_openAll:
 Loop, %scriptCount%
 {
     thisScript := scripts%A_index%0
-    If  scripts%A_index%1 = 0    ;Ã»´ò¿ª
+    If  scripts%A_index%1 = 0    ;Ã»ï¿½ï¿½
     {
         ifinstring, thisScript, !
 	    continue
-        IfWinNotExist %thisScript% - AutoHotkey    ; Ã»ÓÐ´ò¿ª
+        IfWinNotExist %thisScript% - AutoHotkey    ; Ã»ï¿½Ð´ï¿½
             Run %A_ScriptDir%\scripts\%thisScript%
 
         scripts%A_index%1 = 1
@@ -111,7 +111,7 @@ Loop, %scriptCount%
     thisScript := scripts%A_index%0
     If thisScript = %A_thismenuitem%.ahk  ; match found.
     {
-        IfWinNotExist %thisScript% - AutoHotkey    ; Ã»ÓÐ´ò¿ª
+        IfWinNotExist %thisScript% - AutoHotkey    ; Ã»ï¿½Ð´ï¿½
             Run %A_ScriptDir%\scripts\%thisScript%
 
         scripts%A_index%1 := 1
@@ -145,7 +145,7 @@ tsk_closeAll:
 Loop, %scriptCount%
 {
     thisScript := scripts%A_index%0
-    If scripts%A_index%1 = 1  ; ÒÑ´ò¿ª
+    If scripts%A_index%1 = 1  ; ï¿½Ñ´ï¿½
     {
         WinClose %thisScript% - AutoHotkey
         scripts%A_index%1 = 0
@@ -174,10 +174,10 @@ Loop, %scriptCount%
 }
 Return
 
-;+^!Z::
-;    Menu, Tray, Show
-;Return
-;
++^#z::
+    Menu, Tray, Show
+Return
+
 ;+^!X::
 ;	Goto Menu_Tray_Exit
 ;Return
@@ -226,7 +226,7 @@ ExitSub:
     Loop, %scriptCount%
     {
         thisScript := scripts%A_index%0
-        If scripts%A_index%1 = 1  ; ÒÑ´ò¿ª
+        If scripts%A_index%1 = 1  ; ï¿½Ñ´ï¿½
         {
             WinClose %thisScript% - AutoHotkey
             scripts%A_index%1 = 0

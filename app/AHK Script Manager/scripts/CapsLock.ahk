@@ -9,6 +9,13 @@ While false {
 
 #InstallKeybdHook
 
+mouseState := false
+mouseSpeed := 0
+oneMove := 40
+
+oneWidth := A_ScreenWidth / 8
+oneHeight := A_ScreenHeight / 6
+
 
 dictRun = 0  ;dict 运行状态
 ;搜索引擎
@@ -22,7 +29,6 @@ searchStateIng :=0
 ;定义变量
 keyTime := true
 
-singleKeyState := false
 
 SetCapsLockState, AlwaysOff
 
@@ -175,5 +181,90 @@ tooltip,
 ; 关闭鼠标提示
 return
 
-#j::send #^{left}
-#k::send #^{right}
+winLeft:
+send {LWin down}{ctrl down}{left}{LWin up}{ctrl up}
+return
+winRight:
+send {LWin down}{ctrl down}{right}{LWin up}{ctrl up}
+return
+
+#j::goto winLeft
+
+#k::goto winRight
+
+#WheelUp::goto winLeft
+
+#WheelDown::goto winRight
+
+
+CapsLock & d::
+mouseState := true
+return
+
+#If mouseState
+
+n:: oneMove += 30
+m::
+if oneMove > 30
+{
+    oneMove -= 30
+}
+return
+
+j::MouseMove, 0, %oneMove%, %mouseSpeed%, R
+k::MouseMove, 0, -%oneMove%, %mouseSpeed%, R
+h::MouseMove, -%oneMove%, 0, %mouseSpeed%, R
+l::MouseMove, %oneMove%, 0, %mouseSpeed%, R
+`;::MouseClick, left
+'::MouseClick, right
+o::MouseClick, Middle
+u::MouseClick, WheelUp
+i::MouseClick, WheelDown
+
+q::MouseMove, oneWidth, oneHeight
+w::MouseMove, oneWidth * 3, oneHeight
+e::MouseMove, oneWidth * 5, oneHeight
+r::MouseMove, oneWidth * 7, oneHeight
+
+a::MouseMove, oneWidth, oneHeight * 3
+s::MouseMove, oneWidth * 3, oneHeight * 3
+d::MouseMove, oneWidth * 5, oneHeight * 3
+f::MouseMove, oneWidth * 7, oneHeight * 3
+
+z::MouseMove, oneWidth, oneHeight * 5
+x::MouseMove, oneWidth * 3, oneHeight * 5
+c::MouseMove, oneWidth * 5, oneHeight * 5
+v::MouseMove, oneWidth * 7, oneHeight * 5
+
+]::
+CoordMode, tooltip
+;tooltip, one:%oneWidth% %oneHeight%, 20
+
+tooltip, q, oneWidth, oneHeight, 1
+tooltip, w, oneWidth * 3, oneHeight, 2
+tooltip, e, oneWidth * 5, oneHeight, 3
+tooltip, r, oneWidth * 7, oneHeight, 4
+
+tooltip, a, oneWidth, oneHeight * 3, 5
+tooltip, s, oneWidth * 3, oneHeight * 3, 6
+tooltip, d, oneWidth * 5, oneHeight * 3, 7
+tooltip, f, oneWidth * 7, oneHeight * 3, 8
+
+tooltip, z, oneWidth, oneHeight * 5, 9
+tooltip, x, oneWidth * 3, oneHeight * 5, 10
+tooltip, c, oneWidth * 5, oneHeight * 5, 11
+tooltip, v, oneWidth * 7, oneHeight * 5, 12
+
+sleep, 4000
+Loop, 12
+{
+tooltip, , , , A_Index
+}
+CoordMode, tooltip, Relative
+return
+
+CapsLock::
+mouseState := false
+return
+#If
+
