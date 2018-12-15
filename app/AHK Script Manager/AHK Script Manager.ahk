@@ -56,7 +56,6 @@ Loop, %A_ScriptDir%\scripts\*.ahk
 }
 
 
-; ���ӹ���ť
 Menu, Tray, Icon, %A_ScriptDir%\resources\ahk.ico
 Menu, Tray, Click, 1
 Menu, Tray, Tip, AHK Script Manager
@@ -64,21 +63,21 @@ Menu, Tray, Add, AHK Script Manager, Menu_Show
 Menu, Tray, ToggleEnable, AHK Script Manager
 Menu, Tray, Default, AHK Script Manager
 Menu, Tray, Add
-Menu, Tray, Add, �������нű�(&A)`tCtrl + Alt + Shift + Q, tsk_openAll
-Menu, Tray, Add, �����ű�(&O)`tCtrl + Alt + Shift + W, :scripts_unopen
-Menu, Tray, Add, �ر����нű�(&L)`tCtrl + Alt + Shift + A, tsk_closeAll
-Menu, Tray, Add, �رսű�(&C)`tCtrl + Alt + Shift + S, :scripts_unclose
+Menu, Tray, Add, 启动所有脚本(&A)`tCtrl + Alt + Shift + Q, tsk_openAll
+Menu, Tray, Add, 启动脚本(&O)`tCtrl + Alt + Shift + W, :scripts_unopen
+Menu, Tray, Add, 关闭所有脚本(&L)`tCtrl + Alt + Shift + A, tsk_closeAll
+Menu, Tray, Add, 关闭脚本(&C)`tCtrl + Alt + Shift + S, :scripts_unclose
 Menu, Tray, Add
-Menu, Tray, Add, �༭�ű�(&I)`tCtrl + Alt + Shift + E, :scripts_edit
-Menu, Tray, Add, ���ؽű�(&S)`tCtrl + Alt + Shift + D, :scripts_reload
+Menu, Tray, Add, 编辑脚本(&I)`tCtrl + Alt + Shift + E, :scripts_edit
+Menu, Tray, Add, 重载脚本(&S)`tCtrl + Alt + Shift + D, :scripts_reload
 Menu, Tray, Add
-Menu, Tray, Add, �򿪰���Ŀ¼(&D)`t%A_ScriptDir%, Menu_Tray_OpenDir
+Menu, Tray, Add, 打开伴侣目录(&D)`t%A_ScriptDir%, Menu_Tray_OpenDir
 Menu, Tray, Add
-Menu, Tray, Add, ��������(&R), Menu_Tray_Reload
+Menu, Tray, Add, 重启伴侣(&R), Menu_Tray_Reload
 Menu, Tray, Add
-Menu, Tray, Add, �༭����(&E), Menu_Tray_Edit
+Menu, Tray, Add, 编辑代码(&E), Menu_Tray_Edit
 Menu, Tray, Add
-Menu, Tray, Add, �˳�(&X)`tCtrl + Alt + Shift + X, Menu_Tray_Exit
+Menu, Tray, Add, 退出(&X)`tCtrl + Alt + Shift + X, Menu_Tray_Exit
 Menu, Tray, NoStandard
 
 GoSub tsk_openAll

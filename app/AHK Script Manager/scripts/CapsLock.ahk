@@ -11,10 +11,37 @@ While false {
 
 mouseState := false
 mouseSpeed := 0
-oneMove := 40
+oneMove := 20
 
-oneWidth := A_ScreenWidth / 8
-oneHeight := A_ScreenHeight / 6
+currentLevel := 1
+SysGet, A_ScreenWidth_small, 61
+SysGet, A_ScreenHeight_small, 62
+A_ScreenWidth_Local := A_ScreenWidth_small - 10
+A_ScreenHeight_Local := A_ScreenHeight_small
+baseX := 0
+baseY := 0
+baseXOffset := -80
+baseYOffset := 10
+moveX := 0
+moveY := 0
+keysList := []
+creatKey(arr)
+{
+    return {key: arr[1], x: arr[2], y: arr[3]}
+}
+keysList.push(creatKey(["q", 1, 1]))
+keysList.push(creatKey(["w", 3, 1]))
+keysList.push(creatKey(["e", 5, 1]))
+keysList.push(creatKey(["r", 7, 1]))
+keysList.push(creatKey(["a", 1, 3]))
+keysList.push(creatKey(["s", 3, 3]))
+keysList.push(creatKey(["d", 5, 3]))
+keysList.push(creatKey(["f", 7, 3]))
+keysList.push(creatKey(["z", 1, 5]))
+keysList.push(creatKey(["x", 3, 5]))
+keysList.push(creatKey(["c", 5, 5]))
+keysList.push(creatKey(["v", 7, 5]))
+
 
 
 dictRun = 0  ;dict 运行状态
@@ -47,6 +74,12 @@ return
 SetCapsLockState, AlwaysOff
 #NoTrayIcon
 
+;chrome
+#IfWinActive ahk_class Chrome_WidgetWin_1
+^d:: send {PgDn}
+^u:: send {PgUp}
+0:: send ^d
+#IfWinActive
 ;idea 改建
 #IfWinActive ahk_class SunAwtFrame
 CapsLock & enter::send, ^+{enter}
@@ -198,73 +231,114 @@ return
 
 
 CapsLock & d::
+;tooltip, %A_ScreenHeight_small% %A_ScreenWidth_small% %A_ScreenWidth% %A_ScreenHeight%, 100,1070, 1
+;return
 mouseState := true
+currentLevel := 1
+oneMove := 20
+baseX := 0
+baseY := 0
+showTooltipss()
 return
 
 #If mouseState
 
-n:: oneMove += 30
-m::
-if oneMove > 30
-{
-    oneMove -= 30
-}
-return
+1:: oneMove := 5
+2:: oneMove := 25
+3:: oneMove := 55
+4:: oneMove := 85
+;m::
+;if oneMove > 30
+;{
+;    oneMove -= 30
+;}
+;return
 
 j::MouseMove, 0, %oneMove%, %mouseSpeed%, R
 k::MouseMove, 0, -%oneMove%, %mouseSpeed%, R
 h::MouseMove, -%oneMove%, 0, %mouseSpeed%, R
 l::MouseMove, %oneMove%, 0, %mouseSpeed%, R
-`;::MouseClick, left
-'::MouseClick, right
+u::MouseClick, left
+i::MouseClick, right
 o::MouseClick, Middle
-u::MouseClick, WheelUp
-i::MouseClick, WheelDown
+m::MouseClick, WheelDown
+,::MouseClick, WheelUp
+y::
+if GetKeyState("LButton")
+    MouseClick, left,,, 1, 0, U
+else
+    MouseClick, left,,, 1, 0, D
+return
 
-q::MouseMove, oneWidth, oneHeight
-w::MouseMove, oneWidth * 3, oneHeight
-e::MouseMove, oneWidth * 5, oneHeight
-r::MouseMove, oneWidth * 7, oneHeight
+MouseMoveTo(x, y)
+{
+    global
+    ClearTooltip()
+    MouseMove, baseX + baseXOffset + A_ScreenWidth_Local / (8 ** currentLevel) * currentLevel * x, baseY + baseYOffset + A_ScreenHeight_Local / (6 ** currentLevel) * currentLevel * y
+    if (currentLevel = 1) {
+        baseX := (x - 1) * A_ScreenWidth_Local / (8 ** currentLevel) * currentLevel
+        baseY := (y - 1) * A_ScreenHeight_Local / (6 ** currentLevel) * currentLevel
+        currentLevel :=2
+        sleep 10
+        showTooltipss()
+    }else {
+        baseX := 0
+        baseY := 0
+        currentLevel :=1
+    }
+}
 
-a::MouseMove, oneWidth, oneHeight * 3
-s::MouseMove, oneWidth * 3, oneHeight * 3
-d::MouseMove, oneWidth * 5, oneHeight * 3
-f::MouseMove, oneWidth * 7, oneHeight * 3
+Loop % keysList.Length()
+{
+    showTooltipOne(keysList[A_Index].key, keysList[A_Index].x, keysList[A_Index].y, A_Index)
+}
 
-z::MouseMove, oneWidth, oneHeight * 5
-x::MouseMove, oneWidth * 3, oneHeight * 5
-c::MouseMove, oneWidth * 5, oneHeight * 5
-v::MouseMove, oneWidth * 7, oneHeight * 5
+q::MouseMoveTo(1, 1)
+w::MouseMoveTo(3, 1)
+e::MouseMoveTo(5, 1)
+r::MouseMoveTo(7, 1)
+a::MouseMoveTo(1, 3)
+s::MouseMoveTo(3, 3)
+d::MouseMoveTo(5, 3)
+f::MouseMoveTo(7, 3)
+z::MouseMoveTo(1, 5)
+x::MouseMoveTo(3, 5)
+c::MouseMoveTo(5, 5)
+v::MouseMoveTo(7, 5)
+
 
 ]::
-CoordMode, tooltip
-;tooltip, one:%oneWidth% %oneHeight%, 20
+showTooltipss()
+return
 
-tooltip, q, oneWidth, oneHeight, 1
-tooltip, w, oneWidth * 3, oneHeight, 2
-tooltip, e, oneWidth * 5, oneHeight, 3
-tooltip, r, oneWidth * 7, oneHeight, 4
-
-tooltip, a, oneWidth, oneHeight * 3, 5
-tooltip, s, oneWidth * 3, oneHeight * 3, 6
-tooltip, d, oneWidth * 5, oneHeight * 3, 7
-tooltip, f, oneWidth * 7, oneHeight * 3, 8
-
-tooltip, z, oneWidth, oneHeight * 5, 9
-tooltip, x, oneWidth * 3, oneHeight * 5, 10
-tooltip, c, oneWidth * 5, oneHeight * 5, 11
-tooltip, v, oneWidth * 7, oneHeight * 5, 12
-
-sleep, 4000
-Loop, 12
+showTooltipOne(key, x, y, num)
 {
-tooltip, , , , A_Index
+    global
+    tooltip, %key%, baseX + A_ScreenWidth_Local / (8 ** currentLevel) * currentLevel * x, baseY + A_ScreenHeight_Local / (6 ** currentLevel) * currentLevel * y, num
 }
+showTooltipss()
+{
+CoordMode, tooltip
+global keysList
+    Loop % keysList.Length()
+    {
+        showTooltipOne(keysList[A_Index].key, keysList[A_Index].x, keysList[A_Index].y, A_Index)
+    }
+return
+}
+ClearTooltip()
+{
+    Loop, 12
+    {
+    tooltip, , , , A_Index
+    }
 CoordMode, tooltip, Relative
 return
+}
 
 CapsLock::
 mouseState := false
+ClearTooltip()
 return
 #If
 
