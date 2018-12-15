@@ -78,7 +78,7 @@ SetCapsLockState, AlwaysOff
 #IfWinActive ahk_class Chrome_WidgetWin_1
 ^d:: send {PgDn}
 ^u:: send {PgUp}
-0:: send ^d
+^0:: send ^d
 #IfWinActive
 ;idea 改建
 #IfWinActive ahk_class SunAwtFrame
