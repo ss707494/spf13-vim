@@ -16,12 +16,12 @@ oneMove := 20
 currentLevel := 1
 SysGet, A_ScreenWidth_small, 61
 SysGet, A_ScreenHeight_small, 62
-A_ScreenWidth_Local := A_ScreenWidth_small - 10
+A_ScreenWidth_Local := A_ScreenWidth_small
 A_ScreenHeight_Local := A_ScreenHeight_small
 baseX := 0
 baseY := 0
-baseXOffset := -80
-baseYOffset := 10
+baseXOffset := 0
+baseYOffset := 0
 moveX := 0
 moveY := 0
 keysList := []
@@ -254,11 +254,28 @@ return
 ;}
 ;return
 
-j::MouseMove, 0, %oneMove%, %mouseSpeed%, R
-k::MouseMove, 0, -%oneMove%, %mouseSpeed%, R
+j::
+MouseMove, 0, %oneMove%, %mouseSpeed%, R
+ClearTooltip()
+setCurrentLevel()
+return
+k::
+MouseMove, 0, -%oneMove%, %mouseSpeed%, R
+setCurrentLevel()
+ClearTooltip()
+return
 h::MouseMove, -%oneMove%, 0, %mouseSpeed%, R
 l::MouseMove, %oneMove%, 0, %mouseSpeed%, R
-u::MouseClick, left
+u::
+MouseClick, left
+setCurrentLevel()
+ClearTooltip()
+return
+space::
+MouseClick, left
+setCurrentLevel()
+ClearTooltip()
+return
 i::MouseClick, right
 o::MouseClick, Middle
 m::MouseClick, WheelDown
@@ -274,7 +291,9 @@ MouseMoveTo(x, y)
 {
     global
     ClearTooltip()
+    CoordMode, Mouse
     MouseMove, baseX + baseXOffset + A_ScreenWidth_Local / (8 ** currentLevel) * currentLevel * x, baseY + baseYOffset + A_ScreenHeight_Local / (6 ** currentLevel) * currentLevel * y
+    CoordMode, Mouse, Relative
     if (currentLevel = 1) {
         baseX := (x - 1) * A_ScreenWidth_Local / (8 ** currentLevel) * currentLevel
         baseY := (y - 1) * A_ScreenHeight_Local / (6 ** currentLevel) * currentLevel
@@ -335,10 +354,20 @@ ClearTooltip()
 CoordMode, tooltip, Relative
 return
 }
+setCurrentLevel()
+{
+global
+currentLevel :=1
+baseX := 0
+baseY := 0
+return
+}
 
 CapsLock::
 mouseState := false
 ClearTooltip()
+if GetKeyState("LButton")
+    MouseClick, left,,, 1, 0, U
 return
 #If
 
