@@ -225,9 +225,9 @@ return
 
 #k::goto winRight
 
-#WheelUp::goto winLeft
+#LButton::goto winLeft
 
-#WheelDown::goto winRight
+#RButton::goto winRight
 
 
 CapsLock & d::
