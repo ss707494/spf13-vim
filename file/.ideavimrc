@@ -141,10 +141,11 @@ nmap <space>r :action RecentFiles<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
 
+nmap <space>e :action Macro.selectInPro <CR>
+nmap <space>y :action SelectIn<CR>
 "nmap % <Esc>:action EditorMatchBrace<CR>
 nmap m <Esc>:action ToggleBookmark<CR>
 nmap M <Esc>:action ShowBookmarks<CR>
-nmap <space>e :action SelectInProjectView<CR>
 nmap <space>o :action GotoAction<CR>
 nmap <space>t :action ActivateRunToolWindow<CR>
 "nmap / :action Find<CR>
