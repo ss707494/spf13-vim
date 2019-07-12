@@ -215,10 +215,10 @@ tooltip,
 return
 
 winLeft:
-send {LWin down}{ctrl down}{left}{LWin up}{ctrl up}
+send {ctrl down}{LWin down}{left}{LWin up}{ctrl up}
 return
 winRight:
-send {LWin down}{ctrl down}{right}{LWin up}{ctrl up}
+send {ctrl down}{LWin down}{right}{LWin up}{ctrl up}
 return
 
 #j::goto winLeft
@@ -228,6 +228,8 @@ return
 #LButton::goto winLeft
 
 #RButton::goto winRight
+
+~LWin::Send {Blind}{vk07}
 
 
 CapsLock & d::
