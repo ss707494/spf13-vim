@@ -1,6 +1,7 @@
 ;CapsLock 自定义快捷键
 
-#Include %A_ScriptDir%\windows-desktop-switcher-master\desktop_switcher.ahk
+;#Include %A_ScriptDir%\windows-desktop-switcher\desktop_switcher.ahk
+;Run %A_ScriptDir%\windows-desktop-switcher\desktop_switcher.ahk
 
 IfEqual, 0, 0, SetTimer, MyReload, % 60*1000
 While false {
@@ -217,27 +218,29 @@ tooltip,
 return
 
 winLeft:
-switchDesktopToLeft()
+;GoToPrevDesktop()
+;switchDesktopToLeft()
 ;Send #^{Left}
 ;send {LWin down}{ctrl down}{left down}
 ;send {ctrl up}{LWin up}{left up}
 return
 winRight:
-switchDesktopToRight()
+;GoToNextDesktop()
+;switchDesktopToRight()
 ;Send #^{right}
 ;send {LWin down}{ctrl down}{right down}
 ;send {ctrl up}{LWin up}{right up}
 return
 
-#j::switchDesktopToLeft()
+;#j::goto winLeft
 
-#k::switchDesktopToRight()
+;#k::goto winRight
 
-#LButton::goto winLeft
+;#LButton::goto winLeft
 
-#RButton::goto winRight
+;#RButton::goto winRight
 
-~LWin::Send {Blind}{vk07}
+;~LWin::Send {Blind}{vk07}
 
 
 CapsLock & d::
