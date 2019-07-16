@@ -1,1 +1,0 @@
-﻿Clipjump is a multiple clipboard management utility for Windows. It was built to make working with multiple clipboards super fast and super easy. The program records changes in the system clipboard, stores them without any limits and provides innovative ways to work with them.
