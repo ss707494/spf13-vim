@@ -157,3 +157,4 @@ nmap * :action Macro.findOneWordNext<CR>
 vnoremap * :action Macro.findInViewNext<CR>
 nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
+map <tab> %

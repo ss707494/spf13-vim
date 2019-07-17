@@ -1,4 +1,6 @@
 #NoTrayIcon
+#SingleInstance force
+
 DetectHiddenWindows, On
 hwnd:=WinExist("ahk_pid " . DllCall("GetCurrentProcessId","Uint"))
 hwnd+=0x1000<<32
@@ -118,6 +120,11 @@ VWMess(wParam, lParam, msg, hwnd) {
 ; Moving windowes:
 ; Win + Shift + 1 = Move current window to desktop 1, and go there
 ;+#2::MoveCurrentWindowToDesktop(1)
+
++#j::MoveCurrentWindowToDesktop(0)
++#k::MoveCurrentWindowToDesktop(1)
++#l::MoveCurrentWindowToDesktop(2)
++#`;::MoveCurrentWindowToDesktop(3)
 
 #j::GoToPrevDesktop()
 #k::GoToNextDesktop()
