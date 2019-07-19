@@ -121,10 +121,16 @@ VWMess(wParam, lParam, msg, hwnd) {
 ; Win + Shift + 1 = Move current window to desktop 1, and go there
 ;+#2::MoveCurrentWindowToDesktop(1)
 
-+#j::MoveCurrentWindowToDesktop(0)
-+#k::MoveCurrentWindowToDesktop(1)
-+#l::MoveCurrentWindowToDesktop(2)
-+#`;::MoveCurrentWindowToDesktop(3)
++#u::MoveCurrentWindowToDesktop(0)
++#i::MoveCurrentWindowToDesktop(1)
++#o::MoveCurrentWindowToDesktop(2)
++#p::MoveCurrentWindowToDesktop(3)
+
+#u::GoToDesktopNumber(0)
+#i::GoToDesktopNumber(1)
+#o::GoToDesktopNumber(2)
+#p::GoToDesktopNumber(3)
+
 
 #j::GoToPrevDesktop()
 #k::GoToNextDesktop()
