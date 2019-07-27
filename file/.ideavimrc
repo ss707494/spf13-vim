@@ -128,6 +128,11 @@ map <space>l <C-W>l
 map <space>c <C-W>c
 "nmap <c-s> <c-v>
 
+map <silent> <space>w :'<,'>action EditorSelectWord<CR>
+vnoremap <silent> <space>w :'<,'>action EditorSelectWord<CR>
+map <silent> <space>W :'<,'>action EditorUnSelectWord<CR>
+vnoremap <silent> <space>W :'<,'>action EditorUnSelectWord<CR>
+
 "vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     ":<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 "omap s :normal vs<CR>
@@ -160,3 +165,5 @@ nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
 
 map <tab> %
+" set clipboard+=ideaput
+set clipboard+=ideaput
