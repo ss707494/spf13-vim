@@ -30,7 +30,7 @@ MoveCurrentWindowToDesktop(number) {
 	WinGet, activeHwnd, ID, A
 	activeWindowByDesktop[number] := 0 ; Do not activate
 	DllCall(MoveWindowToDesktopNumberProc, UInt, activeHwnd, UInt, number)
-	DllCall(GoToDesktopNumberProc, UInt, number)
+;	DllCall(GoToDesktopNumberProc, UInt, number)
 }
 
 GoToPrevDesktop() {

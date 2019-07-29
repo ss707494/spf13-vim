@@ -70,7 +70,6 @@ set relativenumber
 set ignorecase
 set hlsearch
 nmap <c-s> <c-v>
-set clipboard=unnamedplus
 set so=4
 set incsearch
 set nonu
@@ -120,13 +119,13 @@ set wrap "Wrap lines
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 map <space>j <C-W>j
 map <space>k <C-W>k
 map <space>h <C-W>h
 map <space>l <C-W>l
 map <space>c <C-W>c
-"nmap <c-s> <c-v>
+map <silent> <space>v <c-v>
 
 map <silent> <space>w :'<,'>action EditorSelectWord<CR>
 vnoremap <silent> <space>w :'<,'>action EditorSelectWord<CR>
@@ -156,14 +155,14 @@ nmap <space>t :action ActivateRunToolWindow<CR>
 
 map / :action Find<CR>
 map ? :action Find<CR>
-nmap n :action FindNext<CR>
-nmap N :action FindPrevious<CR>
-nmap * :action Macro.findOneWordNext<CR>
+map n :action FindNext<CR>
+map N :action FindPrevious<CR>
+map * :action Macro.findOneWordNext<CR>
 "nmap * :action EditorEscape<CR>
 vnoremap * :action Macro.findInViewNext<CR>
 nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
 
 map <tab> %
+set clipboard=unnamedplus
 " set clipboard+=ideaput
-set clipboard+=ideaput
