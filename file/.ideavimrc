@@ -165,4 +165,4 @@ vnoremap # :action Macro.findInViewPre<CR>
 
 map <tab> %
 set clipboard=unnamedplus
-" set clipboard+=ideaput
+set clipboard+=ideaput
