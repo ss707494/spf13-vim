@@ -217,31 +217,6 @@ tooltip,
 ; 关闭鼠标提示
 return
 
-winLeft:
-;GoToPrevDesktop()
-;switchDesktopToLeft()
-;Send #^{Left}
-;send {LWin down}{ctrl down}{left down}
-;send {ctrl up}{LWin up}{left up}
-return
-winRight:
-;GoToNextDesktop()
-;switchDesktopToRight()
-;Send #^{right}
-;send {LWin down}{ctrl down}{right down}
-;send {ctrl up}{LWin up}{right up}
-return
-
-;#j::goto winLeft
-
-;#k::goto winRight
-
-;#LButton::goto winLeft
-
-;#RButton::goto winRight
-
-;~LWin::Send {Blind}{vk07}
-
 
 CapsLock & d::
 ;tooltip, %A_ScreenHeight_small% %A_ScreenWidth_small% %A_ScreenWidth% %A_ScreenHeight%, 100,1070, 1
@@ -383,4 +358,31 @@ if GetKeyState("LButton")
     MouseClick, left,,, 1, 0, U
 return
 #If
+
+;;;;;;;;;;;;;;;;;;; 设置快捷输入 quickInput
+quickInputState := false
+
+CapsLock & m::
+    quickInputState := true
+    tooltip,
+    (
+1: ss707494
+2: ss707494@163.com
+    )
+    sleep 4444
+    quickInputState := false
+    tooltip,
+    return
+
+#IF quickInputState
+
+1::send ss707494
+2::send ss707494@163.com
+
+capslock::
+quickInputState := false
+tooltip,
+return
+
+#IF
 
