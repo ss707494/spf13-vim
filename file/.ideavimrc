@@ -66,7 +66,9 @@ set autoread
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=4
 
-set relativenumber
+" set relativenumber
+set nonumber
+set norelativenumber
 set ignorecase
 set hlsearch
 nmap <c-s> <c-v>
@@ -139,8 +141,8 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 "nmap <space>r :action ChooseRunConfiguration<CR>
-nmap <space>s :action QuickList.ss<CR>
-nmap <space>r :action RecentFiles<CR>
+map <space>s :action QuickList.ss<CR>
+map <space>r :action RecentFiles<CR>
 "nmap <space>r :action RecentLocations<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
