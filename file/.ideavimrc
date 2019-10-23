@@ -71,7 +71,7 @@ set nonumber
 set norelativenumber
 set ignorecase
 set hlsearch
-nmap <c-s> <c-v>
+" nmap <c-s> <c-v>
 set so=4
 set incsearch
 set nonu
@@ -100,22 +100,22 @@ syntax enable
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab
+" set expandtab
 
 " Be smart when using tabs ;)
-set smarttab
+" set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+" set lbr
+" set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+" set ai "Auto indent
+" set si "Smart indent
+" set wrap "Wrap lines
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -147,13 +147,14 @@ map <space>r :action RecentFiles<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
 
-nmap <space>e :action Macro.selectInPro <CR>
-nmap <space>y :action SelectIn<CR>
+map <space>e :action Macro.selectInPro <CR>
+map <space>y :action SelectIn<CR>
 "nmap % <Esc>:action EditorMatchBrace<CR>
-nmap m <Esc>:action ToggleBookmark<CR>
-nmap M <Esc>:action ShowBookmarks<CR>
-nmap <space>o :action GotoAction<CR>
-nmap <space>t :action ActivateRunToolWindow<CR>
+map m <Esc>:action ToggleBookmark<CR>
+map M <Esc>:action ShowBookmarks<CR>
+map <space>o :action GotoAction<CR>
+map <space>t :action ActivateRunToolWindow<CR>
+map <space>b :action Git.Branches<CR>
 
 map / :action Find<CR>
 map ? :action Find<CR>
