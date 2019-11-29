@@ -148,6 +148,7 @@ CapsLock & q::send ,!{f9} ;listary
 
 ;常用快捷键命令-------------------
 
+CapsLock & p::send, #p
 CapsLock & w::send, ^!w
 CapsLock & i::send, )
 CapsLock & u::send, (
