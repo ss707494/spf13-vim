@@ -125,11 +125,15 @@ VWMess(wParam, lParam, msg, hwnd) {
 +#i::MoveCurrentWindowToDesktop(1)
 +#o::MoveCurrentWindowToDesktop(2)
 +#p::MoveCurrentWindowToDesktop(3)
++#7::MoveCurrentWindowToDesktop(4)
++#8::MoveCurrentWindowToDesktop(5)
 
 #u::GoToDesktopNumber(0)
 #i::GoToDesktopNumber(1)
 #o::GoToDesktopNumber(2)
 #p::GoToDesktopNumber(3)
+#7::GoToDesktopNumber(4)
+#8::GoToDesktopNumber(5)
 
 
 #j::GoToPrevDesktop()

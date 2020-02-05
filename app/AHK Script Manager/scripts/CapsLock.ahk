@@ -17,8 +17,10 @@ mouseSpeed := 0
 oneMove := 20
 
 currentLevel := 1
-SysGet, A_ScreenWidth_small, 61
-SysGet, A_ScreenHeight_small, 62
+ SysGet, A_ScreenWidth_small, 61
+ SysGet, A_ScreenHeight_small, 62
+; SysGet, A_ScreenWidth_small, 78
+; SysGet, A_ScreenHeight_small, 79
 A_ScreenWidth_Local := A_ScreenWidth_small
 A_ScreenHeight_Local := A_ScreenHeight_small
 baseX := 0
@@ -364,12 +366,14 @@ return
 quickInputState := false
 
 CapsLock & m::
+CoordMode, ToolTip, Relative
+WinGetActiveStats, T, aWidth, aHeight, X, Y
     quickInputState := true
     tooltip,
     (
 1: ss707494
 2: ss707494@163.com
-    )
+    ), aWidth/3, aHeight/3
     sleep 4444
     quickInputState := false
     tooltip,
@@ -377,8 +381,16 @@ CapsLock & m::
 
 #IF quickInputState
 
-1::send ss707494
-2::send ss707494@163.com
+1::
+send ss707494
+quickInputState := false
+tooltip,
+return
+2::
+send ss707494@163.com
+quickInputState := false
+tooltip,
+return
 
 capslock::
 quickInputState := false

@@ -165,6 +165,8 @@ map * :action Macro.findOneWordNext<CR>
 vnoremap * :action Macro.findInViewNext<CR>
 nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
+"cnoremap <c-v> <c-r>+
+imap <C-v> <C-r>+
 
 map <tab> %
 set clipboard=unnamedplus
