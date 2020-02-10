@@ -145,7 +145,7 @@ map <space>s :action QuickList.ss<CR>
 map <space>r :action RecentFiles<CR>
 "nmap <space>r :action RecentLocations<CR>
 nnoremap <space>f :action FindInPath<cr>
-vnoremap <space>f <Esc>gvhh:<bs><bs><bs><bs><bs>action VimVisualSwapSelections<cr>:action FindInPath<cr>
+vnoremap <space>f :action FindInPath<cr>
 
 map <space>e :action Macro.selectInPro <CR>
 map <space>y :action SelectIn<CR>
