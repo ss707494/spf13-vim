@@ -1,7 +1,5 @@
-map(">_w", "w");
 map("w", "R");
 map("q", "E");
-map(">_w", ">_w");
 mapkey('R', '#1Click on an Image or a button', function() {
     Hints.create("img, button", Hints.dispatchMouseClick);
 });
