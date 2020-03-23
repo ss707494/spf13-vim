@@ -150,11 +150,18 @@ CapsLock & q::send ,!{f9} ;listary
 
 ;常用快捷键命令-------------------
 
-CapsLock & p::send, #p
+;微信
 CapsLock & w::send, ^!w
+;企业微信
+CapsLock & r::send, ^!{f9}
+
+
 CapsLock & i::send, )
 CapsLock & u::send, (
 CapsLock & o::send , =
+CapsLock & p::send, >
+CapsLock & [::+sc01A
+CapsLock & ]::+sc01B
 CapsLock & `;::send ,{enter}
 CapsLock & j::send, {down}
 CapsLock & k::send, {up}
@@ -174,6 +181,9 @@ return
 ;Send, {BS}
 ;return
 
+CapsLock & a:: Send, ^a
+CapsLock & f:: Send, ^f
+CapsLock & c:: Send, ^c
 CapsLock & 8:: Send, ^+{TAB}
 CapsLock & 9:: Send, ^{TAB}
 CapsLock & 0:: Send, ^w
@@ -181,7 +191,7 @@ CapsLock & 0:: Send, ^w
 ;CapsLock & x:: Send, ^x                 ; X = Cut
 ;CapsLock & c:: send, ^c
 CapsLock & v::send, ^``         ; V = Paste
-CapsLock & a::
+CapsLock & `::
 GetKeyState, CapsLockState, CapsLock, T                                 ;|
 if CapsLockState = D                                                             ;|
   SetCapsLockState, AlwaysOff                                           ;|
