@@ -48,7 +48,6 @@ keysList.push(creatKey(["c", 5, 5]))
 keysList.push(creatKey(["v", 7, 5]))
 
 
-
 dictRun = 0  ;dict 运行状态
 ;搜索引擎
 searchEngine :="http://www.google.com.hk/search?gws_rd=ssl&q="
@@ -374,6 +373,7 @@ return
 
 ;;;;;;;;;;;;;;;;;;; 设置快捷输入 quickInput
 quickInputState := false
+mostCmd := false
 
 CapsLock & m::
 CoordMode, ToolTip, Relative
@@ -383,13 +383,66 @@ WinGetActiveStats, T, aWidth, aHeight, X, Y
     (
 1: ss707494
 2: ss707494@163.com
+3: 15926443660
+h: idea.bat C:\Windows\System32\drivers\etc\hosts
+(a)ahk script: idea.bat C:\Users\ss707494\.spf13-vim-3\app\AHK Script Manager\scripts\CapsLock.ahk
+c: most cmd
+    ), aWidth/3, aHeight/3
+    return
+
+#IF mostCmd
+
+b::
+send docker start bitwarden
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+1::
+send test most cmd
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+i::
+run, cmd.exe /c "ipconfig /flushdns"
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+r::
+run, cmd.exe /c "ipconfig/release"
+tooltip,
+sleep 1244
+run, cmd.exe /c "ipconfig/renew"
+quickInputState := false
+mostCmd := false
+
+return
+
+#IF
+
+#IF quickInputState
+
+c::
+WinGetActiveStats, T, aWidth, aHeight, X, Y
+    mostCmd := true
+    tooltip,
+    (
+    1: sd;fkj
+    b: docker start bitwarden
+    i: cmd "ipconfig /flushdns"
+    r: cmd "ipconfig/release ipconfig/renew "
     ), aWidth/3, aHeight/3
     sleep 4444
+    mostCmd := false
     quickInputState := false
     tooltip,
     return
-
-#IF quickInputState
+return
 
 1::
 send ss707494
@@ -401,9 +454,26 @@ send ss707494@163.com
 quickInputState := false
 tooltip,
 return
+3::
+send 15926443660
+quickInputState := false
+tooltip,
+return
+h::
+run, cmd.exe /c idea.bat "C:\Windows\System32\drivers\etc\host"
+quickInputState := false
+tooltip,
+return
+a::
+run, cmd.exe /c idea.bat "C:\Users\ss707494\.spf13-vim-3\app\AHK Script Manager\scripts\CapsLock.ahk"
+;; send idea.bat "C:\Users\ss707494\.spf13-vim-3\app\AHK Script Manager\scripts\CapsLock.ahk"
+quickInputState := false
+tooltip,
+return
 
 capslock::
 quickInputState := false
+mostCmd := false
 tooltip,
 return
 

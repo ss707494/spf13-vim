@@ -147,7 +147,7 @@ map <space>r :action RecentFiles<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f :action FindInPath<cr>
 
-map <space>e :action Macro.selectInPro <CR>
+map <space>e :action SelectInProjectView<CR>
 map <space>y :action SelectIn<CR>
 "nmap % <Esc>:action EditorMatchBrace<CR>
 map m <Esc>:action ToggleBookmark<CR>
@@ -161,13 +161,13 @@ map ? :action Find<CR>
 map n :action FindNext<CR>
 map N :action FindPrevious<CR>
 map * :action Macro.findOneWordNext<CR>
-"nmap * :action EditorEscape<CR>
 vnoremap * :action Macro.findInViewNext<CR>
 nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
-"cnoremap <c-v> <c-r>+
-imap <C-v> <C-r>+
+"cnoremap <c-v> <s-insert>
+"imap <c-v> <s-insert>
 
+"nmap * :action EditorEscape<CR>
 map <tab> %
 set clipboard=unnamedplus
 set clipboard+=ideaput
