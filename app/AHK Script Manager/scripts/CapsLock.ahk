@@ -78,6 +78,30 @@ return
 SetCapsLockState, AlwaysOff
 #NoTrayIcon
 
+GetGUIThreadInfo_hwndActive(WinTitle="A")
+{
+	ControlGet, hwnd, HWND,,, %WinTitle%
+	if (WinActive(WinTitle)) {
+		ptrSize := !A_PtrSize ? 4 : A_PtrSize
+		VarSetCapacity(stGTI, cbSize:=4+4+(PtrSize*6)+16, 0)
+		NumPut(cbSize, stGTI,  0, "UInt")
+		return hwnd := DllCall("GetGUIThreadInfo", "Uint", 0, "Ptr", &stGTI)
+				 ? NumGet(stGTI, 8+PtrSize, "Ptr") : hwnd
+	}
+	else {
+		return hwnd
+	}
+}
+
+IME_GetConvMode(WinTitle="A")   {
+    hwnd :=GetGUIThreadInfo_hwndActive(WinTitle)
+    return DllCall("SendMessage"
+          , "Ptr", DllCall("imm32\ImmGetDefaultIMEWnd", "Ptr", hwnd)
+          , "UInt", 0x0283  ;Message : WM_IME_CONTROL
+          ,  "Int", 0x001   ;wParam  : IMC_GETCONVERSIONMODE
+          ,  "Int", 0) & 0xffff     ;lParam  : 0 ， & 0xffff 表示只取低16位
+}
+
 ;chrome
 #IfWinActive ahk_class Chrome_WidgetWin_1
 ^d:: send {PgDn}
@@ -100,10 +124,28 @@ return
 ;CapsLock & 4::
 ;send, !+{F9}
 ;vimArrKeyState := true
-;return
+;return是的sssKKJJJKjk
 ;CapsLock & 5::
 ;send, ^{F5}
 ;return
+~Shift up::
+;send {Shift}
+return
+CapsLock::
+if (IME_GetConvMode() == 1)
+{
+    send {Shift}
+}
+Send {Esc}
+return
+PrintScreen::
+Res1:=IME_GetConvMode()
+Result:=DllCall("GetKeyboardLayout","int",0,UInt)
+SetFormat, integer, hex
+Result += 0
+SetFormat, integer, D
+MsgBox is %Result% %Res1%
+return
 
 #IfWinActive
 
@@ -390,41 +432,6 @@ c: most cmd
     ), aWidth/3, aHeight/3
     return
 
-#IF mostCmd
-
-b::
-send docker start bitwarden
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-1::
-send test most cmd
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-i::
-run, cmd.exe /c "ipconfig /flushdns"
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-r::
-run, cmd.exe /c "ipconfig/release"
-tooltip,
-sleep 1244
-run, cmd.exe /c "ipconfig/renew"
-quickInputState := false
-mostCmd := false
-
-return
-
-#IF
-
 #IF quickInputState
 
 c::
@@ -435,7 +442,7 @@ WinGetActiveStats, T, aWidth, aHeight, X, Y
     1: sd;fkj
     b: docker start bitwarden
     i: cmd "ipconfig /flushdns"
-    r: cmd "ipconfig/release ipconfig/renew "
+    r: cmd "netsh restart"
     ), aWidth/3, aHeight/3
     sleep 4444
     mostCmd := false
@@ -478,4 +485,38 @@ tooltip,
 return
 
 #IF
+
+#IF mostCmd
+
+b::
+send docker start bitwarden
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+1::
+send test most cmd
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+i::
+run, cmd.exe /c "ipconfig /flushdns"
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+r::
+tooltip,
+RunWait, cmd.exe /c "netsh interface set interface name=\"link\" admin=disabled"
+run, cmd.exe /c "netsh interface set interface name=\"link\" admin=enabled"
+quickInputState := false
+mostCmd := false
+return
+
+#IF
+
 
