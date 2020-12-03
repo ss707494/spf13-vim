@@ -165,7 +165,7 @@ vnoremap * :action Macro.findInViewNext<CR>
 nmap # :action Macro.findOneWordPre<CR>
 vnoremap # :action Macro.findInViewPre<CR>
 "cnoremap <c-v> <s-insert>
-"imap <c-v> <s-insert>
+"imap <c-v> <action>(EditorPaste)
 
 "nmap * :action EditorEscape<CR>
 map <tab> %

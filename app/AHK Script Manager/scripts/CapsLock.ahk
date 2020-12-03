@@ -427,7 +427,8 @@ WinGetActiveStats, T, aWidth, aHeight, X, Y
 2: ss707494@163.com
 3: 15926443660
 h: idea.bat C:\Windows\System32\drivers\etc\hosts
-(a)ahk script: idea.bat C:\Users\ss707494\.spf13-vim-3\app\AHK Script Manager\scripts\CapsLock.ahk
+a: ahk script: idea.bat C:\Users\ss707494\.spf13-vim-3\app\AHK Script Manager\scripts\CapsLock.ahk
+y: evernote email
 c: most cmd
     ), aWidth/3, aHeight/3
     return
@@ -463,6 +464,11 @@ tooltip,
 return
 3::
 send 15926443660
+quickInputState := false
+tooltip,
+return
+y::
+send ss707494.a08a5a3@m.yinxiang.com
 quickInputState := false
 tooltip,
 return
