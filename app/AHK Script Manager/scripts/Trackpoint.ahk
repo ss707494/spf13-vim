@@ -49,7 +49,7 @@ tp_TriggerKeyDown:
 tp_Scroll := 1
 MouseGetPos, tp_OrigX, tp_OrigY
 
-SetTimer, tp_setTimer, 100
+SetTimer, tp_setTimer, 130
 ;;tooltip, %tp_Scroll%
 SetTimer, tp_CheckForScrollEventAndExecute, %tp_StartScrollTThreshold%
 return
