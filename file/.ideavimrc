@@ -147,7 +147,7 @@ map <space>r :action RecentFiles<CR>
 nnoremap <space>f :action FindInPath<cr>
 vnoremap <space>f :action FindInPath<cr>
 
-map <space>e :action SelectInProjectView<CR>
+map <space>e <Esc>:action SelectInProjectView<CR>
 map <space>y :action SelectIn<CR>
 "nmap % <Esc>:action EditorMatchBrace<CR>
 map m <Esc>:action ToggleBookmark<CR>
@@ -156,18 +156,19 @@ map <space>o :action GotoAction<CR>
 map <space>t :action ActivateRunToolWindow<CR>
 map <space>b :action Git.Branches<CR>
 
-map / :action Find<CR>
-map ? :action Find<CR>
-map n :action FindNext<CR>
-map N :action FindPrevious<CR>
-map * :action Macro.findOneWordNext<CR>
-vnoremap * :action Macro.findInViewNext<CR>
-nmap # :action Macro.findOneWordPre<CR>
-vnoremap # :action Macro.findInViewPre<CR>
-"cnoremap <c-v> <s-insert>
+"map / :action Find<CR>
+"map ? :action Find<CR>
+"map n :action FindNext<CR>
+"map N :action FindPrevious<CR>
+"map * :action Macro.findOneWordNext<CR>
+"vnoremap * :action Macro.findInViewNext<CR>
+"nmap # :action Macro.findOneWordPre<CR>
+"vnoremap # :action Macro.findInViewPre<CR>
+cnoremap <c-v> <s-insert>
 "imap <c-v> <action>(EditorPaste)
 
 "nmap * :action EditorEscape<CR>
 map <tab> %
 set clipboard=unnamedplus
 set clipboard+=ideaput
+set NERDTree

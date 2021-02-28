@@ -433,6 +433,56 @@ c: most cmd
     ), aWidth/3, aHeight/3
     return
 
+#IF mostCmd
+
+f::
+send -scheme:chrome-extension
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+b::
+send docker start bitwarden
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+1::
+send test most cmd
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+i::
+run, cmd.exe /c "ipconfig /flushdns"
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+r::
+tooltip,
+RunWait, cmd.exe /c "netsh interface set interface name=\"link\" admin=disabled"
+run, cmd.exe /c "netsh interface set interface name=\"link\" admin=enabled"
+quickInputState := false
+mostCmd := false
+return
+
+;;    110  '<,'>s/\(\w*\)-\?\([a-z]\?\)\([a-z]*\):\s\(.*\);/\1\u\2\3: '\4',/g
+;;     326  '<,'>s/\([a-z-]*\)\s*:\s*\([^;]*\)/'\1/': '\2'/
+c::
+SendInput s/\([a-z-]*\)\s*:\s*\([^;]*\)/'\1/': '\2'/g
+quickInputState := false
+mostCmd := false
+tooltip,
+return
+
+#IF
+
+
 #IF quickInputState
 
 c::
@@ -440,10 +490,12 @@ WinGetActiveStats, T, aWidth, aHeight, X, Y
     mostCmd := true
     tooltip,
     (
-    1: sd;fkj
+    1: test
     b: docker start bitwarden
     i: cmd "ipconfig /flushdns"
     r: cmd "netsh restart"
+    c: css to js object
+    f: -scheme:chrome-extension
     ), aWidth/3, aHeight/3
     sleep 4444
     mostCmd := false
@@ -488,39 +540,6 @@ capslock::
 quickInputState := false
 mostCmd := false
 tooltip,
-return
-
-#IF
-
-#IF mostCmd
-
-b::
-send docker start bitwarden
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-1::
-send test most cmd
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-i::
-run, cmd.exe /c "ipconfig /flushdns"
-quickInputState := false
-mostCmd := false
-tooltip,
-return
-
-r::
-tooltip,
-RunWait, cmd.exe /c "netsh interface set interface name=\"link\" admin=disabled"
-run, cmd.exe /c "netsh interface set interface name=\"link\" admin=enabled"
-quickInputState := false
-mostCmd := false
 return
 
 #IF
